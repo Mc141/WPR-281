@@ -9,7 +9,7 @@ body {
 
 
 
-#courses-section {
+#course-section {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 20px 40px;
@@ -165,15 +165,18 @@ body {
 /*responsive queries*/
 
 @media (max-width: 768px) {
+
+    #course-section {
+        padding: 20px;
+    }
+
+
     .course-card {
         grid-column: span 2;
-    }
-
-
-
-    .course-card {
         flex-direction: column;
     }
+
+
 
     .course-image {
         width: 100%;
