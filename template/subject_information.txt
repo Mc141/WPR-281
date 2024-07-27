@@ -1,0 +1,76 @@
+Bachelor of Computing //Course
+
+//Subjects
+Mathematics 181
+Programming 181
+Project Management 181
+Web Programming 181
+Database Development 181
+
+Mathematics 281
+Programming 281
+Project Management 281
+Web Programming 281
+Database Development 281
+
+Database Development 381
+Project 381
+Project Management 381
+Machine Learning 381
+Linear Programming 381
+
+Applied Information Technology 381
+Applied Information Technology 382
+Dissertation 481
+
+/////////////////////////////////////////////////////
+Bachelor of Information Technology //Course
+
+//Subjects
+Database Development 171
+Computer Architecture 171
+Networking Development 171
+Statistics 171
+Information Systems 171
+
+Enterprise Systems 271
+Ethics 271
+Programming 271
+Project Management 271
+Statistics 271
+
+Data Analytics 371
+Software Engineering 371
+Software Analysis & Design 371
+Project 371
+Web Programming 371
+
+/////////////////////////////////////////////////////
+ Diploma of Information Technology//Course
+
+//Subjects
+Business Communication 161
+Computer Architecture 161
+Network Development 161
+Internet of Things 161
+Problem Solving 161
+
+Database Development 261
+Enterprise Systems 261
+Innovation and Leadership 261
+IT Law and Ethics 261
+Project Management 261
+
+Project 361
+Applied Information Technology 361
+Work-Simulation Project 361
+
+/////////////////////////////////////////////////////
+ Certificate: Information Technology//Course
+
+//Subjects
+Operating Systems 251
+Project 251
+Project Management 251
+Security 251
+Mathematics 151
