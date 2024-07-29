@@ -1,0 +1,53 @@
+{
+    "courses": [
+      {
+        "id": 1,
+        "title": "Bachelor of Computing",
+        "code": "BC001",
+        "duration": "4 years",
+        "description": "Gain a strong computing foundation with real-world projects and internships. Specialize in Data Science or Software Engineering.",
+        "modules": []
+      },
+      {
+        "id": 2,
+        "title": "Bachelor of Information Technology",
+        "code": "BIT001",
+        "duration": "3 years",
+        "description": "Focus on IT systems, software engineering, and AI. Specialize in Software Development to advance your career.",
+        "modules": []
+      },
+      {
+        "id": 3,
+        "title": "Diploma in Information Technology",
+        "code": "DIT002",
+        "duration": "3 years",
+        "description": "Start with IT basics, then specialize in Infrastructure or Software Development. Includes 6 months of practical training.",
+        "modules": []
+      },
+      {
+        "id": 4,
+        "title": "Diploma for Deaf Students",
+        "code": "DDS001",
+        "duration": "4 years",
+        "description": "Customized for Deaf students with SASL support. Offers workplace training and an inclusive learning environment.",
+        "modules": []
+      },
+      {
+        "id": 5,
+        "title": "Certificate: IT (Database Development)",
+        "code": "CIT002",
+        "duration": "1 year",
+        "description": "Learn essential database skills for quick job entry. Focus on big data management and business solutions.",
+        "modules": []
+      },
+      {
+        "id": 6,
+        "title": "National Certificate: IT (Systems Development)",
+        "code": "NCIT001",
+        "duration": "1 year",
+        "description": "Develop skills in systems design and software development, preparing for immediate work or further study.",
+        "modules": []
+      }
+    ]
+  }
+  
