@@ -1,0 +1,137 @@
+/* Basic Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 30px 0;
+}
+
+/* Enrollment Container */
+.enrollment-container {
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    padding-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+/* Input Focus */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #00aaff;
+    outline: none;
+}
+
+/* Small Text */
+small {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Gender Options */
+.gender-options {
+    display: flex;
+    gap: 10px;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #00aaff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1rem;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Submit Button Hover */
+.submit-btn:hover {
+    background-color: #0077cc;
+    transform: scale(1.05);
+}
+
+/* Submit Button Effect */
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.submit-btn:hover::before {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .enrollment-container {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+}
