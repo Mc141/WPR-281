@@ -5,6 +5,51 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+
+/*Search Bar*/
+.search {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00aaff;
+  border-right: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+  font-size: large;
+}
+
+.searchTerm:focus{
+  color: #00aaff;
+}
+
+.searchButton {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #00aaff;
+  background: #00aaff;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+
+  
+
+
+
+
 /* Layout */
 #course-section {
     display: grid;
@@ -220,7 +265,11 @@ body {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 944px) {
+    .search {
+        width: 80%;
+    }
+
     #course-section {
         padding: 20px;
     }
