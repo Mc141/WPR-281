@@ -40,22 +40,19 @@ function searchCourses(courseData) {
         // Find titles that match the search substring
         let titlesToKeep = courseTitles.filter(str => regex.test(str));
 
-        // Extract titles to remove
-        let titlesToRemove = courseData.courses.filter(course => !titlesToKeep.includes(course.title)).map(course => course.title);
-
         // Get the course section and course cards
         let courseSection = document.getElementById("course-section");
         let courseCards = courseSection.querySelectorAll(".course-card");
 
-        // Remove course cards with titles in titlesToRemove
+        // Remove course cards with titles not in titlesToKeep
         courseCards.forEach(courseCard => {
             const titleElement = courseCard.querySelector('h2');
   
             const courseTitle = titleElement.textContent;
 
-            if (titlesToRemove.includes(courseTitle)) {
-                courseSection.removeChild(courseCard);
+            if (!titlesToKeep.includes(courseTitle)) {
+                courseCard.style.display = 'none';
             }
         });
-    });
+    }); 
 }
