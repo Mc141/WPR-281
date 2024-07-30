@@ -8,14 +8,14 @@ body {
 
 
 /*Search Bar*/
-.search {
+#search-section {
   width: 50%;
   display: flex;
   margin: 0 auto;
   padding-top: 20px;
 }
 
-.searchTerm {
+#search-bar {
   width: 100%;
   border: 3px solid #00aaff;
   border-right: none;
@@ -27,11 +27,11 @@ body {
   font-size: large;
 }
 
-.searchTerm:focus{
+#search-bar:focus{
   color: #00aaff;
 }
 
-.searchButton {
+#search-button {
   width: 52px;
   height: 52px;
   border: 1px solid #00aaff;
@@ -266,8 +266,12 @@ body {
 
 /* Responsive Adjustments */
 @media (max-width: 944px) {
-    .search {
+    #search-section {
         width: 80%;
+    }
+
+    #search-bar {
+        font-size: medium;
     }
 
     #course-section {
