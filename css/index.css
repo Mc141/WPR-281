@@ -38,8 +38,22 @@ html {
   font-size: 20px;
 }
 
+/*search button animations*/
+#search-button i {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Make sure transitions apply to inline elements */
+}
 
+/* Transition effect for icon change */
+#search-button .icon-transition {
+    opacity: 0;
+    transform: scale(0.8);
+}
 
+#search-button .icon-visible {
+    opacity: 1;
+    transform: scale(1);
+}
   
 
 
