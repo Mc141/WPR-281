@@ -1,24 +1,28 @@
 Bachelor of Computing //Course
 
 //Subjects
+year1
 Mathematics 181
 Programming 181
 Project Management 181
 Web Programming 181
 Database Development 181
 
+year2
 Mathematics 281
 Programming 281
 Project Management 281
 Web Programming 281
 Database Development 281
 
+year3
 Database Development 381
 Project 381
 Project Management 381
 Machine Learning 381
 Linear Programming 381
 
+year4
 Applied Information Technology 381
 Applied Information Technology 382
 Dissertation 481
@@ -27,18 +31,21 @@ Dissertation 481
 Bachelor of Information Technology //Course
 
 //Subjects
+year1
 Database Development 171
 Computer Architecture 171
 Networking Development 171
 Statistics 171
 Information Systems 171
 
+year2
 Enterprise Systems 271
 Ethics 271
 Programming 271
 Project Management 271
 Statistics 271
 
+year3
 Data Analytics 371
 Software Engineering 371
 Software Analysis & Design 371
@@ -46,31 +53,79 @@ Project 371
 Web Programming 371
 
 /////////////////////////////////////////////////////
- Diploma of Information Technology//Course
+ Diploma in Information Technology//Course
 
 //Subjects
+year1
 Business Communication 161
 Computer Architecture 161
 Network Development 161
 Internet of Things 161
 Problem Solving 161
 
+year2
 Database Development 261
 Enterprise Systems 261
 Innovation and Leadership 261
 IT Law and Ethics 261
 Project Management 261
 
+year3
 Project 361
 Applied Information Technology 361
 Work-Simulation Project 361
 
-/////////////////////////////////////////////////////
- Certificate: Information Technology//Course
 
+
+
+
+
+/////////////////////////
+Diploma for deaf Students:
+year1 + year2
+Mathematics 151
+Network Development 151
+Information Systems 151
+Programming 151
+Programming 152
+
+
+year3
+Operating Systems 251	
+Database Administration 251
+Database Development 251
+Network Development 251
+Programming 251
+
+year4
+Applied Information Technology
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+ Certificate: IT (Database Development)//Course
 //Subjects
+year1
 Operating Systems 251
 Project 251
 Project Management 251
 Security 251
 Mathematics 151
+
+
+
+
+
+
+/////////////////////
+National Certificate: IT (Systems Development)
+modules:
+year1
+Mathematics 151
+Database Development 151
+Programming 151
+Web Programming 151
+Information Systems 151
