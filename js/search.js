@@ -43,8 +43,12 @@ function searchCourses(courseData) {
 
     if (!filtered) { // If courses are not filtered
       if (subString !== "") { // Check if the search input is not empty
+
+        // Escape special characters in the search substring for regex
+        const escapedSubString = subString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
         // Regular expression for case-insensitive matching
-        const regex = new RegExp(subString, "i");
+        const regex = new RegExp(escapedSubString, "i");
 
         // Find titles that match the search substring
         titlesToKeep = courseTitles.filter((str) => regex.test(str));
