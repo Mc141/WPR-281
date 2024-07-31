@@ -52,12 +52,10 @@ function displayCourses(data) {
     status.appendChild(hrStatus);
     
     //add the enroll button here/////////////////////////////////////////////////////////////////////////////////////
-    const enrollButton = document.createElement('button');
-    enrollButton.classList.add("enroll-button");
-    enrollButton.textContent = "Enroll";
-    status.appendChild(enrollButton);
-
-
+    const enrollmentStatus = document.createElement("p");
+    enrollmentStatus.textContent = "Status: Not Enrolled";
+    status.appendChild(enrollmentStatus);
+    
 
     
     courseInfo.appendChild(status);
@@ -150,7 +148,7 @@ fetch(jsonFilePath)
  /*
 TODO
 
- create checkbox en label (add op more-info page vir elke module)
+create checkbox en label (add op more-info page vir elke module)
 
      const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -165,7 +163,7 @@ TODO
  
 
 
-create progress bar op main page, wanneer user klaar genroll het vir daai course. (Delete eers course enroll button, en dan add hierdie)
+create progress bar op main page, wanneer user klaar genroll het vir daai course. (Delete eers enrollmentStatus p, en dan add hierdie)
   
     const progressLabel = document.createElement('label');
     progressLabel.htmlFor = `progress${course.id}`;
@@ -184,5 +182,22 @@ create progress bar op main page, wanneer user klaar genroll het vir daai course
     progressContainer.appendChild(progressPercentage);
 
     progressContainer.style.marginTop = "1rem";
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+create enroll button:
+    const enrollButton = document.createElement('button');
+    enrollButton.classList.add("enroll-button");
+    enrollButton.textContent = "Enroll";
+    status.appendChild(enrollButton);
  */
