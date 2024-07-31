@@ -35,3 +35,19 @@ body{
     font-size: 12px;
     color: #333;
 }
+
+.dropdown-content{
+    margin: 10px;
+}
+
+.dropdown-content table {
+    width: 100%;
+    table-layout: fixed; /* Ensures columns are evenly spaced */
+    border-collapse: collapse;
+}
+
+.dropdown-content th, .dropdown-content td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
