@@ -172,6 +172,36 @@ html {
     transform: scale(1.05);
 }
 
+/*Enroll button styling*/
+.enroll-button {
+    background-color: #007bff; /* Primary color */
+    color: #fff; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .enroll-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+  }
+  
+  .enroll-button:active {
+    background-color: #003f7f; /* Even darker shade for active effect */
+    transform: scale(0.95); /* Slightly shrink on click for feedback */
+  }
+  
+
+
+
+
+
+
+
+
+
 /* Checkbox and label styling */
 .course-status {
     margin-top: 1rem;
@@ -192,7 +222,7 @@ html {
 
 /* Progress Bar */
 .progress-container {
-    margin-top: 1rem;
+
     transition: background-color 0.3s ease;
 }
 
