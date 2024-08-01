@@ -29,6 +29,7 @@ function displayYears(data){
 function displayModules(data){
     //Create the table container
     const dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown-content');
 
     //Create table and table body
     const table = document.createElement('table');
