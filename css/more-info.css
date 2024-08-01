@@ -1,13 +1,13 @@
-body{
+body {
     font-family: Arial, sans-serif;
 }
 
-.container{
+.container {
     margin: 0 auto;
     width: 90%;
 }
 
-.dropdown{
+.dropdown {
     margin: 10px 0;
     position: relative;
 }
@@ -22,6 +22,8 @@ body{
     border-radius: 10px;
     cursor: pointer;
     text-align: left;
+    position: relative; /* Ensures the arrow is positioned correctly */
+    transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .dropdown-btn:hover {
@@ -34,9 +36,15 @@ body{
     right: 20px;
     font-size: 12px;
     color: #333;
+    transition: transform 0.3s ease; /* Smooth transition for arrow rotation */
 }
 
-.dropdown-content{
+/* Rotate the arrow when the dropdown is open */
+.dropdown-btn.open::after {
+    transform: rotate(180deg); /* Rotates the arrow 180 degrees */
+}
+
+.dropdown-content {
     margin: 10px;
 }
 
