@@ -19,6 +19,9 @@ function displayYears(data){
         button.textContent = `Year ${value.year}`;
         button.classList.add('dropdown-btn');
 
+        // Add event listener to the button
+        button.addEventListener('click', () => displayModules(data, value.year-1));
+
         dropdown.appendChild(button);
         container.appendChild(dropdown);
 
@@ -26,7 +29,7 @@ function displayYears(data){
     });
 }
 
-function displayModules(data){
+function displayModules(data, year){
     //Create the table container
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown-content');
@@ -50,10 +53,9 @@ function displayModules(data){
     table.appendChild(thead);
 
     //Create and populate the cells
-    for (let j = 0; j < data.courses[0].modules.length; j++) {
-    for (let i = 0; i < data.courses[0].modules[j].subjects.length; i++) {
+    for (let i = 0; i < data.courses[0].modules[year].subjects.length; i++) {
         const row = document.createElement('tr');
-        let details =  data.courses[0].modules[j].subjects[i];
+        let details =  data.courses[0].modules[year].subjects[i];
 
         for (let key in details) {
             const cell = document.createElement('td');
@@ -70,6 +72,10 @@ function displayModules(data){
     document.body.appendChild(dropdown);
 
 }
+
+
+function buttonClick(data){
+    displayModules(data,1);
 }
 
 fetch(jsonFilePath)
@@ -82,13 +88,6 @@ fetch(jsonFilePath)
   .then(data => {
     displayHeading(data);
     displayYears(data);
-    displayModules(data)
-    /*console.log(
-        data.courses[0].modules[0].subjects[0].name
-    ); */
-
-    //iterate modules [] for different years
-    //iterate subjects[] for different names
 
   })
   .catch(error => {
