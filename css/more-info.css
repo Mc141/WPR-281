@@ -40,14 +40,40 @@ body{
     margin: 10px;
 }
 
+/* Container for the table */
 .dropdown-content table {
     width: 100%;
     table-layout: fixed; /* Ensures columns are evenly spaced */
     border-collapse: collapse;
+    margin-top: 10px; /* Adds spacing between dropdown and table */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for better depth */
 }
 
-.dropdown-content th, .dropdown-content td {
+/* Table headers */
+.dropdown-content th {
+    background-color: #4CAF50; /* Green background for headers */
+    color: white; /* White text color for headers */
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
+    font-size: 1.1em; /* Slightly larger font size for headers */
+}
+
+/* Table cells */
+.dropdown-content td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #f9f9f9; /* Light grey background for cells */
+    font-size: 0.95em; /* Slightly smaller font size for cells */
+}
+
+/* Hover effect for table rows */
+.dropdown-content tr:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+/* Alternating row colors for better readability */
+.dropdown-content tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
