@@ -1,5 +1,31 @@
 const jsonFilePath = './data/courses.json';
 
+
+function displayHeading(data){
+    const heading = document.createElement('h1');
+    heading.textContent = data.courses[0].title;
+    document.body.appendChild(heading);
+}
+
+function displayYears(data){
+    const container = document.createElement('div');
+    container.classList.add('container');
+
+    data.courses[0].modules.forEach(value => {
+        const dropdown = document.createElement('div');
+        dropdown.classList.add('dropdown');
+
+        const button = document.createElement('button');
+        button.textContent = `Year ${value.year}`;
+        button.classList.add('dropdown-btn');
+
+        dropdown.appendChild(button);
+        container.appendChild(dropdown);
+
+        document.body.appendChild(container);
+    });
+}
+
 function displayModules(data){
     //Create table and table body
     const table = document.createElement('table');
@@ -19,21 +45,20 @@ function displayModules(data){
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
-    //Create the rows
-    for (let i = 0; i < 5; i++) {
-        const row = document.createElement('tr');
-        for (let j = 0; j < 3; j++) {
+    const row = document.createElement('tr');
+    //Create the cells
+    data.courses[0].modules[0].subjects[0].forEach(cellData => {
             const cell = document.createElement('td');
-            cell.textContent = `Row ${i + 1} Column ${j + 1}`;
+            cell.textContent = cellData;
             row.appendChild(cell);
-        }
+        });
         tbody.appendChild(row);
-    }
+    
 
     table.appendChild(tbody);
 
     // Append the table to the container
-    document.getElementById('yearOne').appendChild(table);
+    document.body.appendChild(table);
 
 }
 
@@ -45,7 +70,16 @@ fetch(jsonFilePath)
     return response.json();
   })
   .then(data => {
-    displayModules(data);
+    displayHeading(data);
+    displayYears(data);
+    displayModules(data)
+    /*console.log(
+        data.courses[0].modules[0].subjects[0].name
+    ); */
+
+    //iterate modules [] for different years
+    //iterate subjects[] for different names
+
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
