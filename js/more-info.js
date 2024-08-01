@@ -49,11 +49,10 @@ function displayModules(data){
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
-    const row = document.createElement('tr');
-    //Create and populate the cells
+    const row = document.createElement('tr');   //Create and populate the cells
 
     for (let i = 0; i < 5; i++) {
-        
+        const row = document.createElement('tr');
         let details =  data.courses[0].modules[0].subjects[i];
 
         for (let key in details) {
