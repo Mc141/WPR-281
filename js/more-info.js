@@ -34,7 +34,7 @@ function displayModules(data){
     //Create the table headers
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
-    const headings = ['Module', 'Study Guide', 'Video Link'];
+    const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link'];
 
     headings.forEach(heading => {
         const th = document.createElement('th');
