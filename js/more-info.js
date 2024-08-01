@@ -51,7 +51,7 @@ function displayModules(data){
 
     //Create and populate the cells
     for (let j = 0; j < data.courses[0].modules.length; j++) {
-    for (let i = 0; i < data.courses.modules[j].subjects.length; i++) {
+    for (let i = 0; i < data.courses[0].modules[j].subjects.length; i++) {
         const row = document.createElement('tr');
         let details =  data.courses[0].modules[j].subjects[i];
 
