@@ -1,5 +1,5 @@
 // URL to the JSON file
-const jsonFilePath = './data/courses.json';
+ const jsonFilePath = './data/courses.json';
 
 // Function to create course cards dynamically
 function displayCourses(data) {
@@ -85,10 +85,11 @@ function displayCourses(data) {
   });
 
   // After all course cards are added, set up event listeners
-  setupEventListeners();
+  // setupEventListeners();
 }
 
-// Function to set up event listeners for course status
+// Function to set up event listeners for course status 
+ /*
 function setupEventListeners() {
   document.querySelectorAll('.course-card').forEach((card) => {
     // Get references to the checkbox, progress bar, progress percentage, and hr elements
@@ -115,6 +116,8 @@ function setupEventListeners() {
     });
   });
 }
+
+*/
 
 // Fetch JSON data and call the display function
 fetch(jsonFilePath)
