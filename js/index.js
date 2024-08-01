@@ -1,5 +1,5 @@
 // URL to the JSON file
- const jsonFilePath = './data/courses.json';
+const jsonFilePath = './data/courses.json';
 
 // Function to create course cards dynamically
 function displayCourses(data) {
