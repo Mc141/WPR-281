@@ -27,6 +27,9 @@ function displayYears(data){
 }
 
 function displayModules(data){
+    //Create the table container
+    const dropdown = document.createElement('div');
+
     //Create table and table body
     const table = document.createElement('table');
     const tbody = document.createElement('tbody');
@@ -46,19 +49,25 @@ function displayModules(data){
     table.appendChild(thead);
 
     const row = document.createElement('tr');
-    //Create the cells
-    data.courses[0].modules[0].subjects[0].forEach(cellData => {
+    //Create and populate the cells
+
+    for (let i = 0; i < 5; i++) {
+        
+        let details =  data.courses[0].modules[0].subjects[i];
+
+        for (let key in details) {
             const cell = document.createElement('td');
-            cell.textContent = cellData;
+            cell.textContent = details[key];
             row.appendChild(cell);
-        });
-        tbody.appendChild(row);
-    
+            }
+            tbody.appendChild(row);
+    }
 
     table.appendChild(tbody);
 
     // Append the table to the container
-    document.body.appendChild(table);
+    dropdown.appendChild(table);
+    document.body.appendChild(dropdown);
 
 }
 
