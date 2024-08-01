@@ -51,38 +51,20 @@ function displayCourses(data) {
     const hrStatus = document.createElement('hr');
     status.appendChild(hrStatus);
     
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('course-completed');
-    checkbox.id = `course${course.id}`;
-    status.appendChild(checkbox);
+    //add the enroll button here/////////////////////////////////////////////////////////////////////////////////////
+    const enrollmentStatus = document.createElement("p");
+    enrollmentStatus.textContent = "Status: Not Enrolled";
+    status.appendChild(enrollmentStatus);
     
-    const label = document.createElement('label');
-    label.htmlFor = `course${course.id}`;
-    label.textContent = 'Mark as Finished';
-    status.appendChild(label);
+
     
     courseInfo.appendChild(status);
     
     // Create and append the progress container
     const progressContainer = document.createElement('div');
     progressContainer.classList.add('progress-container');
-    
-    const progressLabel = document.createElement('label');
-    progressLabel.htmlFor = `progress${course.id}`;
-    progressLabel.textContent = 'Completion Progress:';
-    progressContainer.appendChild(progressLabel);
-    
-    const progress = document.createElement('progress');
-    progress.id = `progress${course.id}`;
-    progress.value = 0;
-    progress.max = 100;
-    progressContainer.appendChild(progress);
-    
-    const progressPercentage = document.createElement('span');
-    progressPercentage.classList.add('progress-percentage');
-    progressPercentage.textContent = '0%';
-    progressContainer.appendChild(progressPercentage);
+
+
     
     const hrProgress = document.createElement('hr');
     progressContainer.appendChild(hrProgress);
@@ -103,10 +85,11 @@ function displayCourses(data) {
   });
 
   // After all course cards are added, set up event listeners
-  setupEventListeners();
+  // setupEventListeners();
 }
 
-// Function to set up event listeners for course status
+// Function to set up event listeners for course status 
+ /*
 function setupEventListeners() {
   document.querySelectorAll('.course-card').forEach((card) => {
     // Get references to the checkbox, progress bar, progress percentage, and hr elements
@@ -134,6 +117,8 @@ function setupEventListeners() {
   });
 }
 
+*/
+
 // Fetch JSON data and call the display function
 fetch(jsonFilePath)
   .then(response => {
@@ -148,3 +133,74 @@ fetch(jsonFilePath)
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*
+TODO
+
+create checkbox en label (add op more-info page vir elke module)
+
+     const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.classList.add('course-completed');
+    checkbox.id = `course${course.id}`;
+    status.appendChild(checkbox);
+    
+    const label = document.createElement('label');
+    label.htmlFor = `course${course.id}`;
+    label.textContent = 'Mark as Finished';
+    status.appendChild(label);
+ 
+
+
+create progress bar op main page, wanneer user klaar genroll het vir daai course. (Delete eers enrollmentStatus p, en dan add hierdie)
+  
+    const progressLabel = document.createElement('label');
+    progressLabel.htmlFor = `progress${course.id}`;
+    progressLabel.textContent = 'Completion Progress:';
+    progressContainer.appendChild(progressLabel);
+    
+    const progress = document.createElement('progress');
+    progress.id = `progress${course.id}`;
+    progress.value = 0;
+    progress.max = 100;
+    progressContainer.appendChild(progress);
+    
+    const progressPercentage = document.createElement('span');
+    progressPercentage.classList.add('progress-percentage');
+    progressPercentage.textContent = '0%';
+    progressContainer.appendChild(progressPercentage);
+
+    progressContainer.style.marginTop = "1rem";
+
+
+
+
+
+
+
+
+
+
+
+
+
+create enroll button:
+    const enrollButton = document.createElement('button');
+    enrollButton.classList.add("enroll-button");
+    enrollButton.textContent = "Enroll";
+    status.appendChild(enrollButton);
+ */

@@ -1,11 +1,12 @@
 {
   "courses": [
     {
-      "id": 1,
+      "id": 0,
       "title": "Bachelor of Computing",
       "code": "BC001",
       "duration": "4 years",
       "description": "Gain a strong computing foundation with real-world projects and internships. Specialize in Data Science or Software Engineering.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -156,11 +157,12 @@
       ]
     },
     {
-      "id": 2,
+      "id": 1,
       "title": "Bachelor of Information Technology",
       "code": "BIT001",
       "duration": "3 years",
       "description": "Focus on IT systems, software engineering, and AI. Specialize in Software Development to advance your career.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -285,11 +287,12 @@
       ]
     },
     {
-      "id": 3,
+      "id": 2,
       "title": "Diploma in Information Technology",
       "code": "DIT002",
       "duration": "3 years",
       "description": "Start with IT basics, then specialize in Infrastructure or Software Development. Includes 6 months of practical training.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -400,11 +403,12 @@
       ]
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "Diploma for Deaf Students",
       "code": "DDS001",
       "duration": "4 years",
       "description": "Customized for Deaf students with SASL support. Offers workplace training and an inclusive learning environment.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -501,11 +505,12 @@
       ]
     },
     {
-      "id": 5,
+      "id": 4,
       "title": "Certificate: IT (Database Development)",
       "code": "CID003",
       "duration": "1 year",
       "description": "Learn database design, SQL, and administration. Hands-on experience included.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -550,11 +555,12 @@
       ]
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "National Certificate: IT (Systems Development)",
       "code": "NCSD004",
       "duration": "1 year",
       "description": "Learn the fundamentals of IT systems development, including coding, system design, and IT infrastructure.",
+      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
