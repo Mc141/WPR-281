@@ -132,14 +132,14 @@
           "year": 4,
           "subjects": [
             {
-              "name": "Applied Information Technology 381",
+              "name": "Applied Information Technology 481",
               "lecturer": "Dr. Peter Scott",
               "venue": "Room 401",
               "studyGuide": "assets/study-guides/demo.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
-              "name": "Applied Information Technology 382",
+              "name": "Applied Information Technology 482",
               "lecturer": "Prof. Quentin Bell",
               "venue": "Room 402",
               "studyGuide": "assets/study-guides/demo.pdf",
