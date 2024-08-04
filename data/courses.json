@@ -16,35 +16,35 @@
               "name": "Mathematics 181",
               "lecturer": "Dr. Alice Johnson",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 181",
               "lecturer": "Prof. Bob Smith",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 181",
               "lecturer": "Dr. Carol Williams",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Web Programming 181",
               "lecturer": "Prof. David Brown",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Database Development 181",
               "lecturer": "Ms. Emily Clark",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -56,35 +56,35 @@
               "name": "Mathematics 281",
               "lecturer": "Dr. Frank Lewis",
               "venue": "Room 201",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 281",
               "lecturer": "Prof. George Edwards",
               "venue": "Room 202",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 281",
               "lecturer": "Ms. Hannah Moore",
               "venue": "Room 203",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Web Programming 281",
               "lecturer": "Dr. Ian Taylor",
               "venue": "Room 204",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Database Development 281",
               "lecturer": "Prof. Jane Anderson",
               "venue": "Room 205",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -96,35 +96,35 @@
               "name": "Database Development 381",
               "lecturer": "Dr. Kevin Wright",
               "venue": "Room 301",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project 381",
               "lecturer": "Ms. Laura Harris",
               "venue": "Room 302",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 381",
               "lecturer": "Dr. Michael Evans",
               "venue": "Room 303",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Machine Learning 381",
               "lecturer": "Prof. Nancy White",
               "venue": "Room 304",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Linear Programming 381",
               "lecturer": "Dr. Olivia Martin",
               "venue": "Room 305",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -136,21 +136,21 @@
               "name": "Applied Information Technology 481",
               "lecturer": "Dr. Peter Scott",
               "venue": "Room 401",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Applied Information Technology 482",
               "lecturer": "Prof. Quentin Bell",
               "venue": "Room 402",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Dissertation 481",
               "lecturer": "Dr. Rachel Adams",
               "venue": "Room 403",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -173,35 +173,35 @@
               "name": "Database Development 171",
               "lecturer": "Dr. Samuel Green",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Computer Architecture 171",
               "lecturer": "Prof. Tom Hall",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Networking Development 171",
               "lecturer": "Ms. Ursula King",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Statistics 171",
               "lecturer": "Dr. Victor Lee",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Information Systems 171",
               "lecturer": "Prof. Wendy Young",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -213,35 +213,35 @@
               "name": "Enterprise Systems 271",
               "lecturer": "Dr. Xavier Nelson",
               "venue": "Room 201",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Ethics 271",
               "lecturer": "Ms. Yvonne Ortega",
               "venue": "Room 202",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 271",
               "lecturer": "Prof. Zachary Price",
               "venue": "Room 203",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 271",
               "lecturer": "Dr. Abby Quinton",
               "venue": "Room 204",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Statistics 271",
               "lecturer": "Prof. Brian Roberts",
               "venue": "Room 205",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -253,35 +253,35 @@
               "name": "Data Analytics 371",
               "lecturer": "Ms. Clara Stevenson",
               "venue": "Room 301",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Software Engineering 371",
               "lecturer": "Dr. Daniel Thompson",
               "venue": "Room 302",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Software Analysis & Design 371",
               "lecturer": "Prof. Elaine Underwood",
               "venue": "Room 303",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project 371",
               "lecturer": "Dr. Fredrick Vance",
               "venue": "Room 304",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Web Programming 371",
               "lecturer": "Ms. Gina Wallace",
               "venue": "Room 305",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -304,35 +304,35 @@
               "name": "Business Communication 161",
               "lecturer": "Dr. Hannah York",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Computer Architecture 161",
               "lecturer": "Prof. Isaac Zephyr",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Network Development 161",
               "lecturer": "Ms. Janet Avery",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Internet of Things 161",
               "lecturer": "Dr. Karl Brooks",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Problem Solving 161",
               "lecturer": "Prof. Linda Chang",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -344,35 +344,35 @@
               "name": "Database Development 261",
               "lecturer": "Ms. Mary Donovan",
               "venue": "Room 201",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Enterprise Systems 261",
               "lecturer": "Dr. Nathan Ellis",
               "venue": "Room 202",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Innovation and Leadership 261",
               "lecturer": "Prof. Olivia Foster",
               "venue": "Room 203",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "IT Law and Ethics 261",
               "lecturer": "Ms. Paulina Grant",
               "venue": "Room 204",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 261",
               "lecturer": "Dr. Quincy Hughes",
               "venue": "Room 205",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -384,21 +384,21 @@
               "name": "Project 361",
               "lecturer": "Prof. Rachel Irwin",
               "venue": "Room 301",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Applied Information Technology 361",
               "lecturer": "Ms. Sophie Jones",
               "venue": "Room 302",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Work-Simulation Project 361",
               "lecturer": "Dr. Tyler Knight",
               "venue": "Room 303",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -415,41 +415,41 @@
       "enrolledStatus" : false,
       "modules": [
         {
-          "year": 1,
+          "year": "1 and 2",
           "subjects": [
             {
               "name": "Mathematics 151",
               "lecturer": "Dr. Ulrich Lewis",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Network Development 151",
               "lecturer": "Prof. Vanessa Martin",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Information Systems 151",
               "lecturer": "Ms. Walter Newton",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 151",
               "lecturer": "Dr. Xena Ortiz",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 152",
               "lecturer": "Prof. Yasmine Perez",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -461,35 +461,35 @@
               "name": "Operating Systems 251",
               "lecturer": "Ms. Zelda Quinn",
               "venue": "Room 201",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Database Administration 251",
               "lecturer": "Dr. Arthur Smith",
               "venue": "Room 202",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Database Development 251",
               "lecturer": "Prof. Barbara Turner",
               "venue": "Room 203",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Network Development 251",
               "lecturer": "Ms. Charles Underwood",
               "venue": "Room 204",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Programming 251",
               "lecturer": "Dr. David Vincent",
               "venue": "Room 205",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -501,7 +501,7 @@
               "name": "Applied Information Technology",
               "lecturer": "Prof. Emily Wilson",
               "venue": "Room 301",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             }
           ]
@@ -524,35 +524,35 @@
               "name": "Operating Systems 251",
               "lecturer": "Dr. Frank Adams",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project 251",
               "lecturer": "Prof. Georgia Brown",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             },
             {
               "name": "Project Management 251",
               "lecturer": "Ms. Harry Clark",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Security 251",
               "lecturer": "Dr. Irene Douglas",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Mathematics 151",
               "lecturer": "Prof. Jack Evans",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             }
           ]
@@ -575,35 +575,35 @@
               "name": "Mathematics 151",
               "lecturer": "Ms. Kate Foster",
               "venue": "Room 101",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Database Development 151",
               "lecturer": "Dr. Lewis Green",
               "venue": "Room 102",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Programming 151",
               "lecturer": "Prof. Maggie Hall",
               "venue": "Room 103",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Web Programming 151",
               "lecturer": "Ms. Nathaniel Irwin",
               "venue": "Room 104",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             },
             {
               "name": "Information Systems 151",
               "lecturer": "Dr. Olivia Jenkins",
               "venue": "Room 105",
-              "studyGuide": "assets/study-guides/demo.pdf",
+              "studyGuide": "./assets/docs/study-guide.pdf",
               "videoLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQcQ"
             }
           ]

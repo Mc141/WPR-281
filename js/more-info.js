@@ -55,27 +55,27 @@ function createCourseInfo() {
 }
 
 // Function to display the course heading, image, and long description
-function displayHeading(data) {
+function displayHeading(data, chosenCourse) {
   const heading = document.getElementById('course-title');
-  heading.textContent = data.courses[0].title;
+  heading.textContent = data.courses[chosenCourse].title;
 
   // Display the course image
   const img = document.getElementById('course-image');
-  img.src = `assets/images/course-${data.courses[0].id}.jpg`; // Use course ID to fetch image
-  img.alt = data.courses[0].title;
+  img.src = `assets/images/course-${data.courses[chosenCourse].id}.jpg`; // Use course ID to fetch image
+  img.alt = data.courses[chosenCourse].title;
 
   // Display the course long description
   const description = document.getElementById('course-description');
-  description.textContent = data.courses[0].longDescription;
+  description.textContent = data.courses[chosenCourse].longDescription;
 }
 
 // Function to display years with dropdown buttons for each year
-function displayYears(data) {
+function displayYears(data, chosenCourse) {
   const container = document.createElement('div');
   container.classList.add('container');
 
   // Loop through each year/module and create a dropdown button
-  data.courses[0].modules.forEach((value, yearIndex) => {
+  data.courses[chosenCourse].modules.forEach((value, yearIndex) => {
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
 
@@ -84,7 +84,7 @@ function displayYears(data) {
     button.classList.add('dropdown-btn');
 
     // Add event listener to toggle module visibility on button click
-    button.addEventListener('click', () => toggleModules(data, yearIndex, dropdown, button));
+    button.addEventListener('click', () => toggleModules(data, yearIndex, dropdown, button, chosenCourse));
 
     dropdown.appendChild(button);
     container.appendChild(dropdown);
@@ -95,7 +95,7 @@ function displayYears(data) {
 }
 
 // Function to toggle the display of modules in a table format for a given year
-function toggleModules(data, year, dropdown, button) {
+function toggleModules(data, year, dropdown, button, chosenCourse) {
   // Check if a dropdown is currently open
   if (currentlyOpenDropdown && currentlyOpenDropdown !== dropdown) {
     // Close the currently open dropdown
@@ -141,7 +141,7 @@ function toggleModules(data, year, dropdown, button) {
     table.appendChild(thead);
 
     // Create and populate the cells for each subject
-    data.courses[0].modules[year].subjects.forEach(subject => {
+    data.courses[chosenCourse].modules[year].subjects.forEach(subject => {
       const row = document.createElement('tr');
 
       // Create and populate the cells for each subject
@@ -192,6 +192,13 @@ function toggleModules(data, year, dropdown, button) {
   }
 }
 
+
+
+////////////////////////// parse chosen course to this variable
+let chosenCourse = 5;
+
+
+
 // Fetch the JSON file and initialize the display functions
 fetch(jsonFilePath)
   .then(response => {
@@ -202,8 +209,8 @@ fetch(jsonFilePath)
   })
   .then(data => {
     createCourseInfo(); // Create and append the course info section
-    displayHeading(data); // Display the course heading, image, and description
-    displayYears(data); // Display the year dropdowns
+    displayHeading(data, chosenCourse); // Display the course heading, image, and description
+    displayYears(data, chosenCourse); // Display the year dropdowns
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error); // Log any fetch errors

@@ -74,6 +74,9 @@ function displayCourses(data) {
     // Create and append the view details button
     const viewDetailsBtn = document.createElement('button');
     viewDetailsBtn.classList.add('view-details-btn');
+
+    viewDetailsBtn.classList.add(course.id);
+
     viewDetailsBtn.textContent = 'View Details';
     courseInfo.appendChild(viewDetailsBtn);
     
