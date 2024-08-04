@@ -28,23 +28,34 @@ form {
     gap: 20px;
 }
 
+/* Heading */
 h1 {
+    text-align: center;
     padding-bottom: 20px;
+}
+
+/* Form Row */
+.form-row {
+    display: flex;
+    gap: 10px;
 }
 
 /* Form Group */
 .form-group {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 /* Labels */
 label {
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #555;
 }
 
-/* Inputs */
+/* Inputs, Selects, and Textareas */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -59,7 +70,6 @@ textarea {
     color: #e0e0e0;
     font-size: 1rem;
     transition: border 0.3s ease;
-    margin-bottom: 5px;
     box-sizing: border-box;
 }
 
@@ -71,10 +81,9 @@ textarea:focus {
     outline: none;
 }
 
-/* Small Text */
-small {
-    color: #999;
-    font-size: 0.8rem;
+/* Radio Inputs */
+input[type="radio"] {
+    margin-right: 5px;
 }
 
 /* Gender Options */
@@ -83,7 +92,24 @@ small {
     gap: 10px;
 }
 
+/* Gender Options Labels */
+.gender-options label {
+    margin-right: 10px;
+}
+
+/* Countdown Timer */
+#countdown-timer {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 50px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    display: none;
+}
+
 /* Submit Button */
+button,
 .submit-btn {
     background-color: #00aaff;
     color: #ffffff;
@@ -98,9 +124,11 @@ small {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+    width: 100%;
 }
 
 /* Submit Button Hover */
+button:hover,
 .submit-btn:hover {
     background-color: #0077cc;
     transform: scale(1.05);
@@ -136,5 +164,6 @@ small {
 
     .form-group {
         width: 100%;
+        margin-right: 0;
     }
 }
