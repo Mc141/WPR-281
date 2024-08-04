@@ -3,11 +3,70 @@ const jsonFilePath = './data/courses.json';
 // Variable to keep track of the currently open dropdown
 let currentlyOpenDropdown = null;
 
-// Function to display the course heading
-function displayHeading(data) {
+// Function to create and append the course info section
+function createCourseInfo() {
+  const courseInfo = document.createElement('div');
+  courseInfo.classList.add('course-info');
+
+  // Create and append the course title
   const heading = document.createElement('h1');
+  heading.id = 'course-title';
+  courseInfo.appendChild(heading);
+
+  // Create and append the course image
+  const img = document.createElement('img');
+  img.id = 'course-image';
+  img.classList.add('course-image');
+  img.alt = 'Course Image';
+  courseInfo.appendChild(img);
+
+  // Create and append the course description
+  const description = document.createElement('p');
+  description.id = 'course-description';
+  description.classList.add('course-description');
+  courseInfo.appendChild(description);
+
+  // Create and append the button container
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container'); // Create container for buttons
+
+  // Enroll Button
+  const enrollButton = document.createElement('button');
+  enrollButton.textContent = 'Enroll in Course';
+  enrollButton.classList.add('enroll-btn');
+  enrollButton.addEventListener('click', () => {
+    alert('You are now enrolled in the course!');
+  });
+  buttonContainer.appendChild(enrollButton);
+
+  // Print Button
+  const printButton = document.createElement('button');
+  printButton.textContent = 'Print';
+  printButton.classList.add('print-btn');
+  printButton.addEventListener('click', () => {
+    window.print(); // Trigger the print dialog
+  });
+  buttonContainer.appendChild(printButton);
+
+  courseInfo.appendChild(buttonContainer);
+
+  // Append the course info to the body
+  document.body.appendChild(courseInfo);
+}
+
+// Function to display the course heading, image, and long description
+function displayHeading(data) {
+  const heading = document.getElementById('course-title');
   heading.textContent = data.courses[0].title;
-  document.body.appendChild(heading);
+
+  // Display the course image
+  const img = document.getElementById('course-image');
+  img.src = `assets/images/course-${data.courses[0].id}.jpg`; // Use course ID to fetch image
+  img.alt = data.courses[0].title;
+
+  // Display the course long description
+  const description = document.getElementById('course-description');
+  description.textContent = data.courses[0].longDescription;
 }
 
 // Function to display years with dropdown buttons for each year
@@ -31,7 +90,8 @@ function displayYears(data) {
     container.appendChild(dropdown);
   });
 
-  document.body.appendChild(container); // Append the container once
+  // Append container to the body
+  document.body.appendChild(container);
 }
 
 // Function to toggle the display of modules in a table format for a given year
@@ -68,7 +128,7 @@ function toggleModules(data, year, dropdown, button) {
     // Create the table headers
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
-    const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link'];
+    const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link', 'Complete'];
 
     // Loop through headings to create table header cells
     headings.forEach(heading => {
@@ -84,7 +144,7 @@ function toggleModules(data, year, dropdown, button) {
     data.courses[0].modules[year].subjects.forEach(subject => {
       const row = document.createElement('tr');
 
-      // Iterate over subject details and create table cells
+      // Create and populate the cells for each subject
       Object.entries(subject).forEach(([key, value]) => {
         const cell = document.createElement('td');
 
@@ -108,6 +168,14 @@ function toggleModules(data, year, dropdown, button) {
 
         row.appendChild(cell);
       });
+
+      // Create checkbox cell and move it to the end
+      const checkboxCell = document.createElement('td');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.classList.add('completion-checkbox');
+      checkboxCell.appendChild(checkbox);
+      row.appendChild(checkboxCell);
 
       tbody.appendChild(row);
     });
@@ -133,8 +201,9 @@ fetch(jsonFilePath)
     return response.json(); // Parse JSON if the response is OK
   })
   .then(data => {
-    displayHeading(data); // Display the course heading
-    displayYears(data);   // Display the year dropdowns
+    createCourseInfo(); // Create and append the course info section
+    displayHeading(data); // Display the course heading, image, and description
+    displayYears(data); // Display the year dropdowns
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error); // Log any fetch errors
