@@ -52,15 +52,21 @@ function displayCourses(data) {
     status.appendChild(hrStatus);
     
     //add the enroll button here/////////////////////////////////////////////////////////////////////////////////////
-    const enrollmentStatus = document.createElement("p");
-    enrollmentStatus.textContent = "Status: Not Enrolled";
-    status.appendChild(enrollmentStatus);
-    
+    let enrolledStatus = course.enrolledStatus;
 
-    
-    courseInfo.appendChild(status);
-    
-    // Create and append the progress container
+    if (!enrolledStatus) {
+      let enrollmentStatusElement = document.createElement("p");
+      enrollmentStatusElement.setAttribute("id", `.status-${course.id}`);
+      enrollmentStatusElement.textContent = "Status: Not Enrolled";
+      status.appendChild(enrollmentStatusElement);
+    } else {
+      let enrollmentStatusElement = document.querySelector(`#status-${course.id}`);
+
+      if(enrollmentStatusElement) {
+        enrollmentStatusElement.remove();
+      }
+      
+      // Create and append the progress container
     const progressContainer = document.createElement('div');
     progressContainer.classList.add('progress-container');
 
@@ -70,6 +76,33 @@ function displayCourses(data) {
     progressContainer.appendChild(hrProgress);
     
     courseInfo.appendChild(progressContainer);
+
+      const progressLabel = document.createElement('label');
+      progressLabel.htmlFor = `progress${course.id}`;
+      progressLabel.textContent = 'Completion Progress:';
+      progressContainer.appendChild(progressLabel);
+      
+      const progress = document.createElement('progress');  
+      progress.id = `progress${course.id}`;
+      progress.value = 0;
+      progress.max = 100;
+      progressContainer.appendChild(progress);
+      
+      const progressPercentage = document.createElement('span');
+      progressPercentage.classList.add('progress-percentage');
+      progressPercentage.textContent = '0%';
+      progressContainer.appendChild(progressPercentage);
+
+      progressContainer.style.marginTop = "1rem";
+    }
+
+
+    
+
+    
+    courseInfo.appendChild(status);
+    
+    
     
     // Create and append the view details button
     const viewDetailsBtn = document.createElement('button');

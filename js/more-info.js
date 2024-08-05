@@ -3,6 +3,9 @@ const jsonFilePath = './data/courses.json';
 // Variable to keep track of the currently open dropdown
 let currentlyOpenDropdown = null;
 
+// Object to keep track of completed courses
+const completedCourses = {};
+
 // Function to create and append the course info section
 function createCourseInfo() {
   const courseInfo = document.createElement('div');
@@ -177,6 +180,9 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
       checkboxCell.appendChild(checkbox);
       row.appendChild(checkboxCell);
 
+      // Add event listener to handle checkbox changes
+      checkbox.addEventListener('change', () => updateCompletionStatus(subject.name, checkbox.checked));
+
       tbody.appendChild(row);
     });
 
@@ -189,15 +195,56 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
 
     // Add class to button to indicate open state
     button.classList.add('open');
+    
+    // Restore checkbox states
+    restoreCheckboxStates();
   }
 }
 
+// Function to update completion status of a course
+function updateCompletionStatus(courseName, isChecked) {
+  // Update the completion status in the completedCourses object
+  if (isChecked) {
+    completedCourses[courseName] = true;
+  } else {
+    delete completedCourses[courseName];
+  }
 
+  // Log the updated completedCourses object
+  console.log('Updated completed courses:', completedCourses);
 
-////////////////////////// parse chosen course to this variable
-let chosenCourse = 5;
+  // Update the total number of completed courses
+  updateCompletedCoursesCount();
+}
 
+// Function to update the count of completed courses
+function updateCompletedCoursesCount() {
+  let count = Object.keys(completedCourses).length;
+  console.log(`Total completed courses: ${count}`);
+}
 
+// Function to restore the checkbox states based on the completedCourses object
+function restoreCheckboxStates() {
+  document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
+    const courseName = checkbox.closest('tr').querySelector('td').textContent;
+    checkbox.checked = completedCourses[courseName] || false;
+  });
+}
+
+// Function to initialize the course information and mark completed courses
+function initializeCourses(data, chosenCourse) {
+  createCourseInfo(); // Create and append the course info section
+  displayHeading(data, chosenCourse); // Display the course heading, image, and description
+  displayYears(data, chosenCourse); // Display the year dropdowns
+
+  // Restore checkbox states for the currently open dropdown
+  restoreCheckboxStates();
+
+  // Update the total number of completed courses
+  updateCompletedCoursesCount();
+}
+
+let chosenCourse = 0;
 
 // Fetch the JSON file and initialize the display functions
 fetch(jsonFilePath)
@@ -208,10 +255,8 @@ fetch(jsonFilePath)
     return response.json(); // Parse JSON if the response is OK
   })
   .then(data => {
-    createCourseInfo(); // Create and append the course info section
-    displayHeading(data, chosenCourse); // Display the course heading, image, and description
-    displayYears(data, chosenCourse); // Display the year dropdowns
+    initializeCourses(data, chosenCourse); // Initialize the course information and status
   })
   .catch(error => {
-    console.error('There was a problem with the fetch operation:', error); // Log any fetch errors
+    console.error('There was a problem with the fetch operation:', error); // Handle errors
   });

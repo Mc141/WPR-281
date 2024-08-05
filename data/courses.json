@@ -7,7 +7,7 @@
       "duration": "4 years",
       "description": "Gain a strong computing foundation with real-world projects and internships. Specialize in Data Science or Software Engineering.",
       "longDescription" : "This comprehensive course provides a robust foundation in computing through a blend of theoretical knowledge and practical experience. You will engage in real-world projects and gain valuable insights from internships with leading tech companies. The curriculum is designed to equip you with essential skills in programming, systems analysis, and software development. Upon completion, you can choose to specialize in Data Science, where you will explore advanced data analysis techniques and machine learning, or in Software Engineering, focusing on developing scalable and efficient software solutions. This course aims to prepare you for a successful career in technology with a strong emphasis on hands-on learning and industry experience.",
-      "enrolledStatus" : false,
+      "enrolledStatus" : true,
       "modules": [
         {
           "year": 1,
