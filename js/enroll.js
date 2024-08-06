@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (element.type === 'select') {
         const select = document.createElement('select');
         select.id = element.id;
+        select.required = true;
         select.name = element.name;
         // Create and add options to the select element
         if (element.options) {
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create and add input fields
         const input = document.createElement('input');
         input.type = element.type;
+        input.required = true;
         input.id = element.id;
         input.name = element.name;
         input.placeholder = element.placeholder;
@@ -233,4 +235,145 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCountdown(); // Initial call to set the countdown immediately
     const timerInterval = setInterval(updateCountdown, 1000); // Update every second
   }
+});
+
+
+
+
+
+
+
+
+// Function to perform extra validations on form inputs
+function validateFormInputs() {
+  const form = document.getElementById('enrollment-form');
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName = document.getElementById('last-name').value.trim();
+  const idNumber = document.getElementById('id').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const dob = document.getElementById('dob').value;
+  const streetAddress = document.getElementById('street-address').value.trim();
+  const suburb = document.getElementById('suburb').value.trim();
+  const city = document.getElementById('city').value.trim();
+  const province = document.getElementById('province').value;
+  const course = document.getElementById('course').value;
+  const genderRadios = document.getElementsByName('gender');
+  const countdownTimer = document.getElementById('countdown-timer');
+
+  // Helper function to check if a field is empty
+  function isEmpty(value) {
+    return value === '';
+  }
+
+  // Validate name fields
+  const namePattern = /^[A-Za-z]+$/;
+  if (isEmpty(firstName) || !namePattern.test(firstName)) {
+    alert('Please enter a valid first name containing only letters.');
+    return false;
+  }
+  if (isEmpty(lastName) || !namePattern.test(lastName)) {
+    alert('Please enter a valid last name containing only letters.');
+    return false;
+  }
+
+  // Validate ID number
+  const idPattern = /^\d{13}$/;
+  if (!idPattern.test(idNumber)) {
+    alert('Please enter a valid 13-digit ID number.');
+    return false;
+  }
+
+  // Validate email format
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  // Validate phone number format
+  const phonePattern = /^\d{10}$/;
+  if (!phonePattern.test(phone)) {
+    alert('Please enter a valid 10-digit phone number.');
+    return false;
+  }
+
+  // Validate date of birth (must be at least 18 years old)
+  if (dob) {
+    const birthDate = new Date(dob);
+    const ageDiff = new Date() - birthDate;
+    const ageDate = new Date(ageDiff);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    if (age < 18) {
+      alert('You must be at least 18 years old to enroll.');
+      return false;
+    }
+  } else {
+    alert('Please enter a valid date of birth.');
+    return false;
+  }
+
+  // Validate address fields
+  if (isEmpty(streetAddress)) {
+    alert('Please enter a street address.');
+    return false;
+  }
+  if (isEmpty(suburb)) {
+    alert('Please enter a suburb.');
+    return false;
+  }
+  if (isEmpty(city)) {
+    alert('Please enter a city.');
+    return false;
+  }
+
+  // Validate province selection
+  if (province === '') {
+    alert('Please select a province.');
+    return false;
+  }
+
+  // Validate course selection
+  if (course === '') {
+    alert('Please select a course.');
+    return false;
+  }
+
+  // Validate gender selection
+  let genderSelected = false;
+  for (let radio of genderRadios) {
+    if (radio.checked) {
+      genderSelected = true;
+      break;
+    }
+  }
+  if (!genderSelected) {
+    alert('Please select your gender.');
+    return false;
+  }
+
+  // If all validations pass
+  return true;
+}
+
+// Handle form submission with validations
+document.addEventListener('DOMContentLoaded', function() {
+  const enrollmentForm = document.getElementById('enrollment-form');
+  const countdownTimer = document.getElementById('countdown-timer');
+
+  enrollmentForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    if (validateFormInputs()) {
+      const selectedCourse = document.getElementById('course').value;
+
+      if (selectedCourse && courseStartDates[selectedCourse]) {
+        const startDate = courseStartDates[selectedCourse];
+        startCountdown(startDate); // Start the countdown for the selected course
+      } else {
+        countdownTimer.style.display = 'block';
+        countdownTimer.textContent = 'Please select a valid course.';
+      }
+    }
+  });
 });

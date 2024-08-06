@@ -236,7 +236,6 @@
 
 
   #card-container {
-    margin-top: 200px;
     position: absolute; /* Positioning context for z-index to work */
     top: 55%; /* Center vertically on the screen */
     left: 50%; /* Center horizontally on the screen */
@@ -251,7 +250,7 @@
   }
   
 /* Style for the exit button */
-#exit-button {
+#more-info-exit-button {
     position: absolute; /* Absolute positioning within the parent */
     top: -1px; /* Distance from the top */
     right: -1px; /* Distance from the right */
@@ -269,7 +268,7 @@
   }
   
   
-  #exit-button:hover {
+  #more-info-exit-button:hover {
     background-color: darkred;
   }
   

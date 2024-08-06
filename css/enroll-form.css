@@ -1,5 +1,5 @@
 /* Basic Styles */
-body {
+/* body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,10 +8,19 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #e0e0e0;
+} */
+
+body {
+    position: relative;
 }
 
 /* Enrollment Container */
-.enrollment-container {
+#enrollment-container {
+    position: absolute; /* Absolute positioning to center within the body */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to exact center */
+    z-index: 12; /* Higher z-index to sit above other elements */
     background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -29,11 +38,10 @@ form {
 }
 
 /* Heading */
-h1 {
+.enroll-form-h1 {
     text-align: center;
     padding-bottom: 20px;
 }
-
 
 /* Form Row */
 .form-row {
@@ -50,17 +58,14 @@ h1 {
 }
 
 /* Labels */
-label {
+.enroll-form-labels {
     margin-bottom: 0.5rem;
     font-weight: bold;
     color: #555;
 }
 
 /* Inputs, Selects, and Textareas */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
+.enroll-input,
 select,
 textarea {
     width: 100%;
@@ -110,7 +115,6 @@ input[type="radio"] {
 }
 
 /* Submit Button */
-button,
 .submit-btn {
     background-color: #00aaff;
     color: #ffffff;
@@ -129,7 +133,6 @@ button,
 }
 
 /* Submit Button Hover */
-button:hover,
 .submit-btn:hover {
     background-color: #0077cc;
     transform: scale(1.05);
@@ -167,4 +170,26 @@ button:hover,
         width: 100%;
         margin-right: 0;
     }
+}
+
+/* Style for the exit button */
+#enroll-exit-button {
+    position: absolute; /* Absolute positioning within the parent */
+    top: 0; /* Distance from the top */
+    right: 0; /* Distance from the right */
+    background-color: red;
+    color: white;
+    border: none;
+    border-top-right-radius: 8px; /* Rounded top-right corner */
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000; /* Ensure the button is on top */
+}
+
+#enroll-exit-button:hover {
+    background-color: darkred;
 }
