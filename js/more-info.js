@@ -37,45 +37,37 @@ function createExitButton() {
 
 // Function to create and append the course info section
 function createCourseInfo() {
-  // Check if the card container already exists
   let cardContainer = document.getElementById('card-container');
   
   if (!cardContainer) {
-    // Create the card container if it doesn't exist
     cardContainer = document.createElement('div');
     cardContainer.id = 'card-container';
     document.body.appendChild(cardContainer);
   }
   
-  // Clear the container before adding new content
   cardContainer.innerHTML = '';
 
   const courseInfo = document.createElement('div');
-  courseInfo.classList.add('course-info');
+  courseInfo.classList.add('course-info-popup');
 
-  // Create and append the course title
   const heading = document.createElement('h1');
   heading.id = 'course-title';
   courseInfo.appendChild(heading);
 
-  // Create and append the course image
   const img = document.createElement('img');
   img.id = 'course-image';
-  img.classList.add('course-image');
+  img.classList.add('course-image-popup');
   img.alt = 'Course Image';
   courseInfo.appendChild(img);
 
-  // Create and append the course description
   const description = document.createElement('p');
   description.id = 'course-description';
-  description.classList.add('course-description');
+  description.classList.add('course-description-popup');
   courseInfo.appendChild(description);
 
-  // Create and append the button container
   const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('button-container'); // Create container for buttons
+  buttonContainer.classList.add('button-container');
 
-  // Enroll Button
   const enrollButton = document.createElement('button');
   enrollButton.textContent = 'Enroll in Course';
   enrollButton.classList.add('enroll-btn');
@@ -84,22 +76,44 @@ function createCourseInfo() {
   });
   buttonContainer.appendChild(enrollButton);
 
-  // Print Button
   const printButton = document.createElement('button');
   printButton.textContent = 'Print';
   printButton.classList.add('print-btn');
   printButton.addEventListener('click', () => {
-    window.print(); // Trigger the print dialog
+    prepareAndPrint(); // Use the new print function
   });
   buttonContainer.appendChild(printButton);
 
   courseInfo.appendChild(buttonContainer);
-
-  // Append the course info to the card container
   cardContainer.appendChild(courseInfo);
+  createExitButton();
+}
 
-    // Create and append the exit button
-    createExitButton();
+// Function to prepare and print the course information
+function prepareAndPrint() {
+  const printContainer = document.createElement('div');
+  printContainer.id = 'print-container';
+
+  const courseTitle = document.getElementById('course-title').cloneNode(true);
+  const courseImage = document.getElementById('course-image').cloneNode(true);
+  const courseDescription = document.getElementById('course-description').cloneNode(true);
+
+  printContainer.appendChild(courseTitle);
+  printContainer.appendChild(courseImage);
+  printContainer.appendChild(courseDescription);
+
+  const modulesContainer = document.querySelector('.container').cloneNode(true);
+  printContainer.appendChild(modulesContainer);
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write('<html><head><title>Print Course Information</title>');
+  printWindow.document.write('<link rel="stylesheet" href="css/reset.css">');
+  printWindow.document.write('<link rel="stylesheet" href="css/print.css">');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(printContainer.innerHTML);
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+  printWindow.print();
 }
 
 // Function to display the course heading, image, and long description
