@@ -267,9 +267,13 @@ function createExitButton(targetId, buttonId) {
     const printButton = document.createElement('button');
     printButton.textContent = 'Print';
     printButton.classList.add('print-btn');
+
     printButton.addEventListener('click', () => {
-      window.print(); // Trigger the print dialog
+
+
+      prepareAndPrint();
     });
+
     buttonContainer.appendChild(printButton);
   
     courseInfo.appendChild(buttonContainer);
@@ -281,6 +285,64 @@ function createExitButton(targetId, buttonId) {
       createExitButton('card-container', 'more-info-exit-button');
   }
   
+
+
+
+
+
+// Function to prepare and print the course information
+function prepareAndPrint() {
+  const printContainer = document.createElement('div');
+  printContainer.id = 'print-container';
+
+  // Clone content to be printed
+  const courseTitle = document.getElementById('course-title').cloneNode(true);
+  const courseImage = document.getElementById('course-image-popup').cloneNode(true);
+  const courseDescription = document.getElementById('course-description').cloneNode(true);
+
+  // Append content to print container
+  printContainer.appendChild(courseTitle);
+  printContainer.appendChild(courseImage);
+  printContainer.appendChild(courseDescription);
+
+  // Clone and append modules container
+  const modulesContainer = document.querySelector('.container').cloneNode(true);
+  printContainer.appendChild(modulesContainer);
+
+  // Open a new window for printing
+  const printWindow = window.open('', '_blank');
+  printWindow.document.open();
+  
+  // Write the HTML content and include stylesheets for printing
+  printWindow.document.write('<html><head><title>Print Course Information</title>');
+  printWindow.document.write('<link rel="stylesheet" href="./css/reset.css">');
+  printWindow.document.write('<link rel="stylesheet" href="./css/print.css">');
+  printWindow.document.write('</head><body>');
+  printWindow.document.write(printContainer.innerHTML);
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+
+  // Ensure the print dialog opens and then close the window after printing
+  printWindow.onload = function() {
+    printWindow.focus(); // Focus on the print window to ensure it is in view
+    printWindow.print(); // Open print dialog
+  };
+
+  printWindow.onafterprint = function() {
+    printWindow.close(); // Close the window after printing
+  };
+}
+
+  
+
+
+
+
+
+
+
+
+
   // Function to display the course heading, image, and long description
   function displayHeading(data, chosenCourse) {
     const heading = document.getElementById('course-title');
@@ -521,6 +583,7 @@ function removeBackgroundBlur() {
 
 
 
+
 // Wait for the DOM to fully load before executing the script
 const rows = [
   // First row with name and ID fields
@@ -588,6 +651,22 @@ const rows = [
     ]
   }
 ];
+
+
+
+
+
+function enrollCourse(courseId) {
+  if (!enrolledCourses[courseId]) {
+    enrolledCourses[courseId] = true;
+    sessionStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+  }
+}
+
+
+
+
+
 
 
 
@@ -699,6 +778,8 @@ function createEnrollForm(rows) {
   submitRow.appendChild(submitButton);
   form.appendChild(submitRow);
 
+  /////////////////////////////////////////////////////////
+
   // Create and add the countdown timer
   const countdownTimer = document.createElement('div');
   countdownTimer.id = 'countdown-timer';
@@ -719,13 +800,17 @@ function createEnrollForm(rows) {
 
     enrollmentForm.addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent the default form submission
-
+    
       if (validateFormInputs()) {
         const selectedCourse = document.getElementById('course').value;
 
         if (selectedCourse && courseStartDates[selectedCourse]) {
           const startDate = courseStartDates[selectedCourse];
           startCountdown(startDate); // Start the countdown for the selected course
+
+          const courseId = document.getElementById('course').value;
+          enrollCourse(courseId);
+
         } else {
           countdownTimer.style.display = 'block';
           countdownTimer.textContent = 'Please select a valid course.';
