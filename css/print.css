@@ -1,0 +1,72 @@
+/* Print Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+#course-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#course-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#course-description {
+  margin-bottom: 20px;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  margin-bottom: 10px;
+}
+
+.dropdown-btn {
+  display: none;
+}
+
+.dropdown-content {
+  display: block;
+  background-color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.completion-checkbox {
+  display: none;
+}
