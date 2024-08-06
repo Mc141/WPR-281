@@ -1,13 +1,55 @@
+// URL to the JSON file
 const jsonFilePath = './data/courses.json';
 
-// Variable to keep track of the currently open dropdown
+
+    // Variable to keep track of the currently open dropdown
 let currentlyOpenDropdown = null;
 
 // Object to keep track of completed courses
 const completedCourses = {};
 
+
+// Function to create and append the exit button
+function createExitButton() {
+  // Create the exit button
+  const exitButton = document.createElement('button');
+  exitButton.id = 'exit-button';
+  exitButton.innerHTML = '&#10006;'; // Cross symbol
+  exitButton.classList.add('exit-btn');
+
+  // Add click event to remove the card container
+  exitButton.addEventListener('click', () => {
+    const cardContainer = document.getElementById('card-container');
+    if (cardContainer) {
+      cardContainer.remove(); // Remove the card container
+      document.body.style.backgroundColor = 'white'; // Set the background to white
+    }
+  });
+
+  // Append the exit button to the card container
+  const cardContainer = document.getElementById('card-container');
+  if (cardContainer) {
+    cardContainer.appendChild(exitButton);
+  }
+}
+
+
+
 // Function to create and append the course info section
 function createCourseInfo() {
+  // Check if the card container already exists
+  let cardContainer = document.getElementById('card-container');
+  
+  if (!cardContainer) {
+    // Create the card container if it doesn't exist
+    cardContainer = document.createElement('div');
+    cardContainer.id = 'card-container';
+    document.body.appendChild(cardContainer);
+  }
+  
+  // Clear the container before adding new content
+  cardContainer.innerHTML = '';
+
   const courseInfo = document.createElement('div');
   courseInfo.classList.add('course-info');
 
@@ -53,8 +95,11 @@ function createCourseInfo() {
 
   courseInfo.appendChild(buttonContainer);
 
-  // Append the course info to the body
-  document.body.appendChild(courseInfo);
+  // Append the course info to the card container
+  cardContainer.appendChild(courseInfo);
+
+    // Create and append the exit button
+    createExitButton();
 }
 
 // Function to display the course heading, image, and long description
@@ -93,9 +138,12 @@ function displayYears(data, chosenCourse) {
     container.appendChild(dropdown);
   });
 
-  // Append container to the body
-  document.body.appendChild(container);
+  // Append container to the card container
+  const cardContainer = document.getElementById('card-container');
+  cardContainer.appendChild(container);
 }
+
+
 
 // Function to toggle the display of modules in a table format for a given year
 function toggleModules(data, year, dropdown, button, chosenCourse) {
@@ -199,7 +247,9 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
     // Restore checkbox states
     restoreCheckboxStates();
   }
-}
+
+
+
 
 // Function to update completion status of a course
 function updateCompletionStatus(courseName, isChecked) {
@@ -231,32 +281,36 @@ function restoreCheckboxStates() {
   });
 }
 
-// Function to initialize the course information and mark completed courses
-function initializeCourses(data, chosenCourse) {
-  createCourseInfo(); // Create and append the course info section
-  displayHeading(data, chosenCourse); // Display the course heading, image, and description
-  displayYears(data, chosenCourse); // Display the year dropdowns
+};
 
-  // Restore checkbox states for the currently open dropdown
-  restoreCheckboxStates();
 
-  // Update the total number of completed courses
-  updateCompletedCoursesCount();
-}
+
+
+
+
+
+
+
+
 
 let chosenCourse = 0;
 
-// Fetch the JSON file and initialize the display functions
-fetch(jsonFilePath)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json(); // Parse JSON if the response is OK
-  })
-  .then(data => {
-    initializeCourses(data, chosenCourse); // Initialize the course information and status
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error); // Handle errors
-  });
+
+
+// Fetch the JSON data and initialize the courses
+document.addEventListener('DOMContentLoaded', () => {
+  fetch(jsonFilePath)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse JSON if the response is OK
+    })
+    .then(data => {
+      createCourseInfo(); // Create and append the course info section
+      displayHeading(data, chosenCourse); // Display the course heading, image, and description
+      displayYears(data, chosenCourse); // Display years with dropdown buttons
+    })
+    .catch(error => console.error('Error fetching JSON data:', error));
+});
+

@@ -1,3 +1,5 @@
+const jsonFilePath = './data/courses.json';
+
 // Fetch course data from JSON file
 fetch(jsonFilePath)
   .then((response) => {

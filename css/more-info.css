@@ -1,14 +1,8 @@
 /* General Body Styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f0f0f0, #ffffff);
-    color: #333;
-}
+
 
 /* Container for content above the dropdowns */
-.course-info {
+.course-info-popup {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr; /* Three columns layout */
     grid-template-rows: auto auto; /* Two rows layout */
@@ -34,7 +28,7 @@ body {
 }
 
 /* Image styles */
-.course-image {
+.course-image-popup {
     max-width: 100%;
     height: auto;
     display: block;
@@ -45,7 +39,7 @@ body {
 }
 
 /* Paragraph styles */
-.course-description {
+.course-description-popup {
     font-size: 1.1rem;
     line-height: 1.6;
     grid-column: 2 / 3;
@@ -168,6 +162,7 @@ body {
 /* Table cells */
 .dropdown-content td {
     padding: 12px;
+    color: black;
     border: 1px solid #ddd;
     text-align: center;
     background-color: #f9f9f9;
@@ -186,7 +181,7 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 1110px) {
-    .course-info {
+    .course-info-popup {
         grid-template-columns: 1fr; /* Single column layout for narrower screens */
 
     }
@@ -238,4 +233,106 @@ body {
 
 
 /* modal dynamic styles*/
- 
+
+
+  #card-container {
+    margin-top: 200px;
+    position: absolute; /* Positioning context for z-index to work */
+    top: 55%; /* Center vertically on the screen */
+    left: 50%; /* Center horizontally on the screen */
+    transform: translate(-50%, -50%); /* Adjust to actually center */
+    z-index: 10; /* Higher z-index to appear on top */
+    background-color: white; /* Optional: to make sure it looks distinct */
+    width: 80%; /* Set width according to your needs */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add a shadow for emphasis */
+    border-radius: 8px; /* Optional: Rounding the corners */
+    padding: 20px; /* Optional: Spacing inside the card */
+    overflow: hidden; /* Make sure any overflowing content is hidden */
+  }
+  
+/* Style for the exit button */
+#exit-button {
+    position: absolute; /* Absolute positioning within the parent */
+    top: -1px; /* Distance from the top */
+    right: -1px; /* Distance from the right */
+    background-color: red;
+    color: white;
+    border: none;
+    border-top-right-radius: 8px; /* Rounded top-right corner */
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000; /* Ensure the button is on top */
+  }
+  
+  
+  #exit-button:hover {
+    background-color: darkred;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* To prevent body scroll when the popup is open */
+body.no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Adjustments to make sure the popup header is sticky and visible */
+  .course-info-popup {
+    position: relative;
+  }
+  
+  .course-info-popup h1 {
+    margin-top: 0;
+  }
+  
+  .exit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  /* Additional styles to make dropdown content accessible */
+  .dropdown-content {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  /* Ensure that the popup does not exceed the viewport */
+  @media (max-width: 600px) {
+    #card-container {
+      max-width: 95%;
+      max-height: 90%;
+    }
+  }
+
+
+
+  
+/* blur items */
+.blur {
+    filter: blur(10px); /* Apply blur effect */
+}

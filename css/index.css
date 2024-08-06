@@ -74,6 +74,7 @@ html {
     grid-gap: 20px 40px;
     padding: 40px;
     justify-content: center;
+    position: relative;
 }
 
 /* Course Card */
