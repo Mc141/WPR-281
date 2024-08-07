@@ -1,5 +1,3 @@
-/* General Body Styles */
-
 
 /* Container for content above the dropdowns */
 .course-info-popup {
@@ -56,7 +54,8 @@
 }
 
 /* Enroll Button */
-.enroll-btn, .print-btn {
+.enroll-btn,
+.print-btn {
     padding: 12px 24px;
     font-size: 18px;
     border: none;
@@ -183,7 +182,6 @@
 @media (max-width: 1110px) {
     .course-info-popup {
         grid-template-columns: 1fr; /* Single column layout for narrower screens */
-
     }
 
     #course-title {
@@ -192,12 +190,12 @@
         grid-row: 1 / 2;
     }
 
-    .course-image {
+    .course-image-popup {
         width: 100%; /* Ensure image fits container */
         grid-column: 1 / 3;
     }
 
-    .course-description {
+    .course-description-popup {
         font-size: 1rem;
         margin: 15px 0; /* Adjust margin if needed */
         grid-column: 1 / 3;
@@ -212,7 +210,8 @@
         grid-column: 1 / 3;
     }
 
-    .enroll-btn, .print-btn {
+    .enroll-btn,
+    .print-btn {
         width: 100%;
         max-width: 300px; /* Adjust maximum width if needed */
     }
@@ -226,16 +225,8 @@
     }
 }
 
-
-
-
-
-
-
-/* modal dynamic styles*/
-
-
-  #card-container {
+/* Modal Dynamic Styles */
+#card-container {
     position: absolute; /* Positioning context for z-index to work */
     top: 55%; /* Center vertically on the screen */
     left: 50%; /* Center horizontally on the screen */
@@ -243,12 +234,12 @@
     z-index: 10; /* Higher z-index to appear on top */
     background-color: white; /* Optional: to make sure it looks distinct */
     width: 80%; /* Set width according to your needs */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add a shadow for emphasis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for emphasis */
     border-radius: 8px; /* Optional: Rounding the corners */
     padding: 20px; /* Optional: Spacing inside the card */
     overflow: hidden; /* Make sure any overflowing content is hidden */
-  }
-  
+}
+
 /* Style for the exit button */
 #more-info-exit-button {
     position: absolute; /* Absolute positioning within the parent */
@@ -265,42 +256,28 @@
     text-align: center;
     cursor: pointer;
     z-index: 1000; /* Ensure the button is on top */
-  }
-  
-  
-  #more-info-exit-button:hover {
+}
+
+#more-info-exit-button:hover {
     background-color: darkred;
-  }
-  
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* To prevent body scroll when the popup is open */
+/* Prevent body scroll when the popup is open */
 body.no-scroll {
     overflow: hidden;
-  }
-  
-  /* Adjustments to make sure the popup header is sticky and visible */
-  .course-info-popup {
+}
+
+/* Sticky popup header */
+.course-info-popup {
     position: relative;
-  }
-  
-  .course-info-popup h1 {
+}
+
+.course-info-popup h1 {
     margin-top: 0;
-  }
-  
-  .exit-btn {
+}
+
+/* Exit button styling */
+.exit-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -308,58 +285,82 @@ body.no-scroll {
     border: none;
     font-size: 24px;
     cursor: pointer;
-  }
-  
-  .container {
+}
+
+.container {
     margin-top: 20px;
-  }
-  
-  /* Additional styles to make dropdown content accessible */
-  .dropdown-content {
+}
+
+/* Accessible dropdown content */
+.dropdown-content {
     max-height: 300px;
     overflow-y: auto;
-  }
-  
-  /* Ensure that the popup does not exceed the viewport */
-  @media (max-width: 600px) {
+}
+
+/* Ensure popup does not exceed the viewport */
+@media (max-width: 600px) {
     #card-container {
-      max-width: 95%;
-      max-height: 90%;
+        max-width: 95%;
+        max-height: 90%;
     }
-  }
+}
 
-
-
-  
-/* blur items */
+/* Blur items */
 .blur {
     filter: blur(10px); /* Apply blur effect */
 }
 
-
-
+/* Hidden class */
 .hidden {
     display: none;
-  }
-  
-  .strikethrough td {
+}
+
+.strikethrough td {
     text-decoration: line-through;
-  }
-  
-  .filter-button {
+}
+
+.filter-button {
     display: block;
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    background-color: #007BFF; /* Blue background */
-    color: white; /* White text */
+    background-color: #007BFF; /* Blue */
+    color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 8px;
     font-size: 16px;
-  }
-  
-  .filter-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+    cursor: pointer;
+}
+
+.enroll-status {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.progress-container {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.info-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.enroll-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#enroll-btn,
+#print-btn {
+    width: 45%;
+}
+

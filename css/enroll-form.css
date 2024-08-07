@@ -1,59 +1,45 @@
-/* Basic Styles */
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 30px 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-} */
 
-body {
-    position: relative;
-}
 
 /* Enrollment Container */
 #enrollment-container {
-    position: absolute; /* Absolute positioning to center within the body */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    position: absolute; /* Positioning within the body for centering */
+    top: 50%; /* Vertical centering */
+    left: 50%; /* Horizontal centering */
     transform: translate(-50%, -50%); /* Adjust to exact center */
-    z-index: 12; /* Higher z-index to sit above other elements */
-    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    z-index: 12; /* Higher z-index to ensure it sits above other elements */
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a); /* Background gradient */
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
     padding: 40px;
     max-width: 800px;
-    width: 90%;
+    width: 90%; /* Responsive width */
     box-sizing: border-box;
 }
 
-/* Form */
+/* Form Styles */
 form {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column; /* Arrange form elements vertically */
+    gap: 20px; /* Space between form elements */
 }
 
-/* Heading */
+/* Form Heading */
 .enroll-form-h1 {
-    text-align: center;
+    text-align: center; /* Center align heading */
     padding-bottom: 20px;
 }
 
 /* Form Row */
 .form-row {
-    display: flex;
-    gap: 10px;
+    display: flex; /* Display form groups in a row */
+    gap: 10px; /* Space between form groups */
 }
 
 /* Form Group */
 .form-group {
-    flex: 1;
+    flex: 1; /* Allow form groups to grow equally */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Arrange label and input vertically */
     margin-bottom: 10px;
 }
 
@@ -68,7 +54,7 @@ form {
 .enroll-input,
 select,
 textarea {
-    width: 100%;
+    width: 100%; /* Full width within form group */
     padding: 10px;
     background-color: #2a2a2a;
     border: 2px solid #444;
@@ -83,7 +69,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #00aaff;
+    border-color: #00aaff; /* Border color on focus */
     outline: none;
 }
 
@@ -94,24 +80,13 @@ input[type="radio"] {
 
 /* Gender Options */
 .gender-options {
-    display: flex;
-    gap: 10px;
+    display: flex; /* Display radio options in a row */
+    gap: 10px; /* Space between radio options */
 }
 
 /* Gender Options Labels */
 .gender-options label {
     margin-right: 10px;
-}
-
-/* Countdown Timer */
-#countdown-timer {
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-    padding: 50px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    display: none;
 }
 
 /* Submit Button */
@@ -129,13 +104,13 @@ input[type="radio"] {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-    width: 100%;
+    width: 100%; /* Full width of form */
 }
 
 /* Submit Button Hover */
 .submit-btn:hover {
     background-color: #0077cc;
-    transform: scale(1.05);
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Submit Button Effect */
@@ -152,27 +127,56 @@ input[type="radio"] {
 }
 
 .submit-btn:hover::before {
-    opacity: 1;
+    opacity: 1; /* Show radial gradient on hover */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .enrollment-container {
-        padding: 20px;
-    }
-
-    .form-row {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .form-group {
-        width: 100%;
-        margin-right: 0;
-    }
+/* Countdown Timer */
+#countdown-timer {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    padding: 50px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
 }
 
-/* Style for the exit button */
+/* Countdown Container Styling */
+#countdown-container {
+    position: fixed; /* Fixed positioning for countdown */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* Countdown Popup Styling */
+.countdown-popup {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Error Popup Styling */
+#error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Style for the Exit Button */
 #enroll-exit-button {
     position: absolute; /* Absolute positioning within the parent */
     top: 0; /* Distance from the top */
@@ -191,45 +195,22 @@ input[type="radio"] {
 }
 
 #enroll-exit-button:hover {
-    background-color: darkred;
+    background-color: darkred; /* Darker color on hover */
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #enrollment-container {
+        padding: 20px; /* Smaller padding for smaller screens */
+    }
 
+    .form-row {
+        flex-direction: column; /* Stack form groups vertically */
+        gap: 10px;
+    }
 
-
-
-/* Countdown Container Styling */
-#countdown-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-  }
-  
-  /* Countdown Popup Styling */
-  .countdown-popup {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    font-size: 16px;
-  }
-  
-  /* Error Popup Styling */
-  #error-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    font-size: 16px;
-  }
-  
+    .form-group {
+        width: 100%; /* Full width for each form group */
+        margin-right: 0;
+    }
+}
