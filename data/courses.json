@@ -7,7 +7,6 @@
       "duration": "4 years",
       "description": "Gain a strong computing foundation with real-world projects and internships. Specialize in Data Science or Software Engineering.",
       "longDescription" : "This comprehensive course provides a robust foundation in computing through a blend of theoretical knowledge and practical experience. You will engage in real-world projects and gain valuable insights from internships with leading tech companies. The curriculum is designed to equip you with essential skills in programming, systems analysis, and software development. Upon completion, you can choose to specialize in Data Science, where you will explore advanced data analysis techniques and machine learning, or in Software Engineering, focusing on developing scalable and efficient software solutions. This course aims to prepare you for a successful career in technology with a strong emphasis on hands-on learning and industry experience.",
-      "enrolledStatus" : true,
       "modules": [
         {
           "year": 1,
@@ -164,7 +163,6 @@
       "duration": "3 years",
       "description": "Focus on IT systems, software engineering, and AI. Specialize in Software Development to advance your career.",
       "longDescription" : "This course is tailored for those looking to advance their career in the dynamic field of Information Technology. It offers an in-depth exploration of IT systems, software engineering principles, and artificial intelligence. You will gain expertise in designing, developing, and managing complex software systems, with a focus on real-world applications and problem-solving. The program includes specialized training in Software Development, where you will learn advanced programming techniques and software lifecycle management. Whether you are looking to enhance your existing skills or pivot into a new area, this course provides the knowledge and practical experience necessary to excel in the evolving IT landscape.",
-      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -295,7 +293,6 @@
       "duration": "3 years",
       "description": "Start with IT basics, then specialize in Infrastructure or Software Development. Includes 6 months of practical training.",
       "longDescription" : "This course starts with a solid introduction to IT fundamentals, covering essential concepts and practices. As you progress, you will have the opportunity to specialize in either IT Infrastructure or Software Development. The Infrastructure track focuses on managing and maintaining IT systems, including networking, security, and system administration. The Software Development track emphasizes coding, software design, and application development. The program also includes six months of hands-on practical training, allowing you to apply your skills in real-world scenarios and gain valuable industry experience. This course is designed to build a comprehensive skill set, preparing you for various roles in the IT field.",
-      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -412,7 +409,6 @@
       "duration": "4 years",
       "description": "Customized for Deaf students with SASL support. Offers workplace training and an inclusive learning environment.",
       "longDescription" : "This course is specifically designed to cater to the needs of Deaf students, incorporating South African Sign Language (SASL) support to ensure effective communication and learning. The program offers a tailored curriculum that covers IT systems, software development, and workplace training, all within an inclusive and accessible learning environment. Students will receive practical training that is customized to their needs, focusing on the development of skills required for various IT roles. The course aims to provide Deaf students with the same opportunities for career advancement as their hearing peers, promoting a diverse and inclusive tech industry.",
-      "enrolledStatus" : false,
       "modules": [
         {
           "year": "1 and 2",
@@ -515,7 +511,6 @@
       "duration": "1 year",
       "longDescription" : "This course provides an in-depth exploration of database design, management, and administration. You will learn how to design efficient and scalable database systems, write complex SQL queries, and implement robust database administration practices. The curriculum includes hands-on experience with real-world database scenarios, allowing you to practice and refine your skills in a practical setting. Topics covered include data modeling, normalization, database security, and performance optimization. By the end of the course, you will have a strong understanding of how to create and manage databases effectively, preparing you for roles such as Database Administrator or Data Analyst.",
       "description": "Learn database design, SQL, and administration. Hands-on experience included.",
-      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
@@ -566,7 +561,6 @@
       "duration": "1 year",
       "description": "Learn the fundamentals of IT systems development, including coding, system design, and IT infrastructure.",
       "longDescription" : "This course offers a comprehensive introduction to the fundamentals of IT systems development. It covers key areas such as coding, system design, and IT infrastructure. You will learn the basics of programming languages, software development methodologies, and system architecture. The course is designed to provide a solid foundation in developing and managing IT systems, with practical examples and hands-on projects to reinforce learning. By the end of the course, you will have a clear understanding of how to build and maintain IT systems, equipping you with the skills needed for a variety of roles in the technology sector.",
-      "enrolledStatus" : false,
       "modules": [
         {
           "year": 1,
