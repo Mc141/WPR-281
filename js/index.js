@@ -1,6 +1,38 @@
 // URL to the JSON file
 const jsonFilePath = './data/courses.json';
 
+
+
+let enrolledInCourses = {
+  'Bachelor of Computing': {
+    id: 0,
+    status: false
+  },
+  'Bachelor of Information Technology': {
+    id: 1,
+    status: false
+  },
+  'Diploma in Information Technology': {
+    id: 2,
+    status: false
+  },
+  'Diploma for Deaf Students': {
+    id: 3,
+    status: false
+  },
+  'Certificate: IT (Database Development)': {
+    id: 4,
+    status: false
+  },
+  'National Certificate: IT (Systems Development)': {
+    id: 5,
+    status: false
+  }
+};
+
+
+
+
 // Function to create course cards dynamically
 function displayCourses(data) {
   const courseSection = document.getElementById('course-section');
@@ -56,40 +88,11 @@ function displayCourses(data) {
     enrollmentStatusElement.setAttribute("id", `status-${course.id}`);
     status.appendChild(enrollmentStatusElement);
     // Add the enroll button
-    let enrolledStatus = course.enrolledStatus;
-    if (!enrolledStatus) {
+
 
       enrollmentStatusElement.textContent = "Status: Not Enrolled";
       
-    } else {
-
-      enrollmentStatusElement.textContent = "Status: Enrolled";
-        
-        // Create and append the progress container
-        const progressContainer = document.createElement('div');
-        progressContainer.classList.add('progress-container');
-        const hrProgress = document.createElement('hr');
-        progressContainer.appendChild(hrProgress);
-        courseInfo.appendChild(progressContainer);
-        
-        const progressLabel = document.createElement('label');
-        progressLabel.htmlFor = `progress-${course.id}`;
-        progressLabel.textContent = 'Completion Progress:';
-        progressContainer.appendChild(progressLabel);
-        
-        const progress = document.createElement('progress');
-        progress.id = `progress-${course.id}`;
-        progress.value = 0;
-        progress.max = 100;
-        progressContainer.appendChild(progress);
-        
-        const progressPercentage = document.createElement('span');
-        progressPercentage.classList.add('progress-percentage');
-        progressPercentage.textContent = '0%';
-        progressContainer.appendChild(progressPercentage);
-        
-        progressContainer.style.marginTop = "1rem";
-      }
+    
       courseInfo.appendChild(status);
       
       // Create and append the view details button
@@ -656,20 +659,21 @@ const rows = [
 
 
 
+
+
+
+
+
+
+let enrolledCourses = [];
+
+// When a user enrolls for a course, update the enrolledCourses array
 function enrollCourse(courseId) {
-  if (!enrolledCourses[courseId]) {
-    enrolledCourses[courseId] = true;
-    sessionStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+  if (!enrolledCourses.includes(courseId)) {
+    enrolledCourses.push(courseId);
+    console.log(enrolledCourses);
   }
 }
-
-
-
-
-
-
-
-
 
 function createEnrollForm(rows) {
   // Create the container for the enrollment form
@@ -685,24 +689,20 @@ function createEnrollForm(rows) {
   // Create the form element
   const form = document.createElement('form');
   form.id = 'enrollment-form';
-  form.action = '#'; // Action can be updated as needed
-
- 
 
   // Define form rows and their elements
-
   // Generate form rows based on the defined structure
-  rows.forEach(row => {
+  rows.forEach((row) => {
     const formRow = document.createElement('div');
     formRow.className = 'form-row';
 
-    row.elements.forEach(element => {
+    row.elements.forEach((element) => {
       const formGroup = document.createElement('div');
       formGroup.className = 'form-group';
 
       // Create and add label for each form element
       const label = document.createElement('label');
-      label.classList.add("enroll-form-labels")
+      label.classList.add('enroll-form-labels');
       label.setAttribute('for', element.id);
       label.textContent = element.label;
       formGroup.appendChild(label);
@@ -715,7 +715,7 @@ function createEnrollForm(rows) {
         select.name = element.name;
         // Create and add options to the select element
         if (element.options) {
-          element.options.forEach(option => {
+          element.options.forEach((option) => {
             const opt = document.createElement('option');
             opt.value = option.value;
             opt.textContent = option.text;
@@ -729,7 +729,7 @@ function createEnrollForm(rows) {
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'gender-options';
         // Create and add radio buttons
-        element.options.forEach(option => {
+        element.options.forEach((option) => {
           const radioLabel = document.createElement('label');
           const radioInput = document.createElement('input');
           radioInput.type = 'radio';
@@ -772,188 +772,358 @@ function createEnrollForm(rows) {
   const submitRow = document.createElement('div');
   submitRow.className = 'form-row';
   const submitButton = document.createElement('button');
-  submitButton.type = 'submit';
+  submitButton.type = 'button';
   submitButton.className = 'submit-btn';
   submitButton.textContent = 'Enroll Now';
   submitRow.appendChild(submitButton);
   form.appendChild(submitRow);
 
-  /////////////////////////////////////////////////////////
-
-  // Create and add the countdown timer
-  const countdownTimer = document.createElement('div');
-  countdownTimer.id = 'countdown-timer';
-
-  // Append form and countdown timer to the container
+  // Append form to the container
   container.appendChild(form);
-  container.appendChild(countdownTimer);
 
   // Append the container to the body of the document
   document.body.appendChild(container);
-   // Create the exit button
-   createExitButton('enrollment-container', 'enroll-exit-button');
 
-  // Handle form submission with validations
-  document.addEventListener('DOMContentLoaded', function() {
-    const enrollmentForm = document.getElementById('enrollment-form');
-    const countdownTimer = document.getElementById('countdown-timer');
+  // Create the exit button
+  createExitButton('enrollment-container', 'enroll-exit-button');
 
-    enrollmentForm.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the default form submission
-    
-      if (validateFormInputs()) {
-        const selectedCourse = document.getElementById('course').value;
 
-        if (selectedCourse && courseStartDates[selectedCourse]) {
-          const startDate = courseStartDates[selectedCourse];
-          startCountdown(startDate); // Start the countdown for the selected course
 
-          const courseId = document.getElementById('course').value;
-          enrollCourse(courseId);
+// Attach event listener for form submission
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent the default form submission
 
-        } else {
-          countdownTimer.style.display = 'block';
-          countdownTimer.textContent = 'Please select a valid course.';
+  if (validateFormInputs()) {
+    const selectedCourse = document.getElementById('course').value;
+    console.log('Selected Course:', selectedCourse);
+
+    if (selectedCourse) {
+      if (enrolledInCourses[selectedCourse] && enrolledInCourses[selectedCourse].status) {
+        // If the course is already enrolled in, show an alert
+        alert('You have already enrolled in this course.');
+        return; // Exit the function to prevent further processing
+      }
+
+      if (courseStartDates[selectedCourse]) {
+        // Remove the enrollment container
+        const container = document.getElementById('enrollment-container');
+        if (container) {
+          container.remove();
         }
-      }
-    });
-  });
 
-  // Define start dates for courses
-  const courseStartDates = {
-    'Bachelor of Computing': new Date('2024-12-01'),
-    'Bachelor of Information Technology': new Date('2024-11-01'),
-    'Diploma in Information Technology': new Date('2024-10-01'),
-    'Diploma for Deaf Students': new Date('2024-10-01'),
-    'Certificate: IT (Database Development)': new Date('2024-09-01'),
-    'National Certificate: IT (Systems Development)': new Date('2024-09-01')
-  };
+        // Create and display a new container for the countdown timer
+        const countdownContainer = document.createElement('div');
+        countdownContainer.id = 'countdown-container';
+        countdownContainer.classList.add('countdown-container');
 
-  // Function to start the countdown timer
-  function startCountdown(startDate) {
-    function updateCountdown() {
-      const currentDate = new Date();
-      const timeDifference = startDate - currentDate;
+        const countdownPopup = document.createElement('div');
+        countdownPopup.id = 'countdown-popup';
+        countdownPopup.classList.add('countdown-popup');
+        countdownContainer.appendChild(countdownPopup);
 
-      if (timeDifference > 0) {
-        // Calculate days, hours, minutes, and seconds remaining
-        const daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        const hoursRemaining = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutesRemaining = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        // Append the countdown container to the body
+        document.body.appendChild(countdownContainer);
 
-        countdownTimer.style.display = 'block';
-        countdownTimer.textContent = `Time remaining until the course starts: ${daysRemaining} days, ${hoursRemaining} hours, ${minutesRemaining} minutes, and ${secondsRemaining} seconds.`;
+        const startDate = courseStartDates[selectedCourse];
+        startCountdown(startDate, countdownPopup); // Pass countdownPopup to the function
+
+        // Update enrolledInCourses structure
+        if (enrolledInCourses[selectedCourse] !== undefined) {
+          enrolledInCourses[selectedCourse].status = true;
+        }
+
+        // Update the enrollment status and progress container for each course
+        Object.keys(enrolledInCourses).forEach(courseName => {
+          const course = enrolledInCourses[courseName];
+          const courseId = course.id;
+          const courseCard = document.querySelector(`#course-section > article:nth-child(${courseId + 1})`);
+          const enrollmentStatusElement = courseCard.querySelector(`#status-${courseId}`);
+          const courseInfo = courseCard.querySelector('.course-info');
+
+          if (course.status) {
+            if (enrollmentStatusElement) {
+              enrollmentStatusElement.textContent = "Status: Enrolled";
+            }
+
+            // Check if the progress container already exists
+            let existingProgressContainer = courseInfo.querySelector('.progress-container');
+            if (!existingProgressContainer) {
+              // Create and append the progress container
+              const progressContainer = document.createElement('div');
+              progressContainer.classList.add('progress-container');
+              const hrProgress = document.createElement('hr');
+              progressContainer.appendChild(hrProgress);
+
+              const progressLabel = document.createElement('label');
+              progressLabel.htmlFor = `progress-${courseId}`;
+              progressLabel.textContent = 'Completion Progress:';
+              progressContainer.appendChild(progressLabel);
+
+              const progress = document.createElement('progress');
+              progress.id = `progress-${courseId}`;
+              progress.value = 0;
+              progress.max = 100;
+              progressContainer.appendChild(progress);
+
+              const progressPercentage = document.createElement('span');
+              progressPercentage.classList.add('progress-percentage');
+              progressPercentage.textContent = '0%';
+              progressContainer.appendChild(progressPercentage);
+
+              // Add a <br> for separation
+              const countdownBr = document.createElement('br');
+              progressContainer.appendChild(countdownBr);
+
+              // Add a <hr> for separation
+              const countdownHr = document.createElement('hr');
+              progressContainer.appendChild(countdownHr);
+
+              const countdownTimer = document.createElement('span');
+              countdownTimer.id = `countdown-${courseId}`;
+              countdownTimer.classList.add('countdown-timer');
+              progressContainer.appendChild(countdownTimer);
+
+              // Append the progress container to courseInfo
+              courseInfo.appendChild(progressContainer);
+
+              // Initialize the countdown timer
+              startCountdown(courseStartDates[courseName], countdownTimer); // Pass countdownTimer to the function
+
+              progressContainer.style.marginTop = "1rem";
+            }
+          } else {
+            if (enrollmentStatusElement) {
+              enrollmentStatusElement.textContent = "Status: Not Enrolled";
+            }
+          }
+        });
+
+        // Log the updated enrolledInCourses object for debugging
+        console.log('Updated Enrolled Courses:', enrolledInCourses);
+
+        enrollCourse(selectedCourse); // Ensure this function reflects the updated status if needed
+
+        // Set timeout to hide the countdown container and remove the background blur
+        setTimeout(() => {
+          const countdownPopupElement = document.getElementById('countdown-popup');
+          if (countdownPopupElement) {
+            countdownPopupElement.remove();
+            removeBackgroundBlur(); // Call function to remove blur
+          }
+        }, 3000);
+
       } else {
-        clearInterval(timerInterval);
-        countdownTimer.style.display = 'block';
-        countdownTimer.textContent = 'The course has already started or the date is invalid.';
+        const errorPopup = document.createElement('div');
+        errorPopup.id = 'error-popup';
+        errorPopup.classList.add('error-popup');
+        errorPopup.textContent = 'Please select a valid course.';
+        document.body.appendChild(errorPopup);
+
+        setTimeout(() => {
+          errorPopup.style.display = 'none';
+          removeBackgroundBlur(); // Call function to remove blur
+        }, 3000);
       }
     }
-
-    updateCountdown(); // Initial call to set the countdown immediately
-    const timerInterval = setInterval(updateCountdown, 1000); // Update every second
   }
+});
 
-  // Function to perform extra validations on form inputs
-  function validateFormInputs() {
-    const form = document.getElementById('enrollment-form');
-    const firstName = document.getElementById('first-name').value.trim();
-    const lastName = document.getElementById('last-name').value.trim();
-    const idNumber = document.getElementById('id').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const dob = document.getElementById('dob').value;
-    const streetAddress = document.getElementById('street-address').value.trim();
-    const suburb = document.getElementById('suburb').value.trim();
-    const city = document.getElementById('city').value.trim();
-    const province = document.getElementById('province').value;
-    const course = document.getElementById('course').value;
-    const genderRadios = document.getElementsByName('gender');
 
-    // Helper function to check if a field is empty
-    function isEmpty(value) {
-      return value === '';
-    }
 
-    // Validate name fields
-    const namePattern = /^[A-Za-z]+$/;
-    if (isEmpty(firstName) || !namePattern.test(firstName)) {
-      alert('Please enter a valid first name containing only letters.');
-      return false;
-    }
-    if (isEmpty(lastName) || !namePattern.test(lastName)) {
-      alert('Please enter a valid last name containing only letters.');
-      return false;
-    }
 
-    // Validate ID number
-    const idPattern = /^\d{13}$/;
-    if (!idPattern.test(idNumber)) {
-      alert('Please enter a valid 13-digit ID number.');
-      return false;
-    }
 
-    // Validate email format
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email)) {
-      alert('Please enter a valid email address.');
-      return false;
-    }
+// Function to start the countdown timer
+function startCountdown(startDate, countdownPopupElement) {
+  countdownPopupElement.style.display = 'block'; // Show the countdown element
 
-    // Validate phone number format
-    const phonePattern = /^\d{10}$/;
-    if (!phonePattern.test(phone)) {
-      alert('Please enter a valid 10-digit phone number.');
-      return false;
-    }
+  function updateCountdown() {
+    const currentDate = new Date();
+    const timeDifference = startDate - currentDate;
 
-    // Validate date of birth (must be at least 18 years old)
-    if (dob) {
-      const birthDate = new Date(dob);
-      const ageDiff = new Date() - birthDate;
-      const ageDate = new Date(ageDiff);
-      const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-      if (age < 18) {
-        alert('You must be at least 18 years old to enroll.');
-        return false;
-      }
+    if (timeDifference > 0) {
+      // Calculate days, hours, minutes, and seconds remaining
+      const daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hoursRemaining = Math.floor(
+        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutesRemaining = Math.floor(
+        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      countdownPopupElement.textContent = `Time remaining until the course starts: ${daysRemaining} days, ${hoursRemaining} hours, ${minutesRemaining} minutes, and ${secondsRemaining} seconds.`;
     } else {
-      alert('Please enter your date of birth.');
-      return false;
+      clearInterval(timerInterval);
+      countdownPopupElement.textContent =
+        'The course has already started or the date is invalid.';
     }
-
-    // Validate address fields
-    if (isEmpty(streetAddress)) {
-      alert('Please enter your street address.');
-      return false;
-    }
-    if (isEmpty(suburb)) {
-      alert('Please enter your suburb.');
-      return false;
-    }
-    if (isEmpty(city)) {
-      alert('Please enter your city.');
-      return false;
-    }
-    if (province === '') {
-      alert('Please select your province.');
-      return false;
-    }
-
-    // Validate course selection
-    if (course === '') {
-      alert('Please select a course.');
-      return false;
-    }
-
-    // Validate gender selection
-    const genderSelected = Array.from(genderRadios).some(radio => radio.checked);
-    if (!genderSelected) {
-      alert('Please select your gender.');
-      return false;
-    }
-
-    return true;
   }
+
+  updateCountdown(); // Initial call to set the countdown immediately
+  let timerInterval = setInterval(updateCountdown, 1000); // Update every second
+};
+
+
+
+
+// Define start dates for courses
+const courseStartDates = {
+  'Bachelor of Computing': new Date('2024-12-01'),
+  'Bachelor of Information Technology': new Date('2024-11-01'),
+  'Diploma in Information Technology': new Date('2024-10-01'),
+  'Diploma for Deaf Students': new Date('2024-10-01'),
+  'Certificate: IT (Database Development)': new Date('2024-09-01'),
+  'National Certificate: IT (Systems Development)': new Date('2024-09-01'),
+};
+
+// Function to start the countdown timer
+function startCountdown(startDate, countdownPopupElement) {
+  countdownPopupElement.style.display = 'block'; // Show the popup
+
+  function updateCountdown() {
+    const currentDate = new Date();
+    const timeDifference = startDate - currentDate;
+
+    if (timeDifference > 0) {
+      // Calculate days, hours, minutes, and seconds remaining
+      const daysRemaining = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hoursRemaining = Math.floor(
+        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutesRemaining = Math.floor(
+        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const secondsRemaining = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      countdownPopupElement.textContent = `Time remaining until the course starts: ${daysRemaining} days, ${hoursRemaining} hours, ${minutesRemaining} minutes, and ${secondsRemaining} seconds.`;
+    } else {
+      countdownPopupElement.textContent =
+        'The course has already started or the date is invalid.';
+    }
+  }
+
+  updateCountdown(); // Initial call to set the countdown immediately
+  let timerInterval = setInterval(updateCountdown, 1000); // Update every second
+}
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to perform extra validations on form inputs
+function validateFormInputs() {
+  const form = document.getElementById('enrollment-form');
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName = document.getElementById('last-name').value.trim();
+  const idNumber = document.getElementById('id').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const dob = document.getElementById('dob').value;
+  const streetAddress = document.getElementById('street-address').value.trim();
+  const suburb = document.getElementById('suburb').value.trim();
+  const city = document.getElementById('city').value.trim();
+  const province = document.getElementById('province').value;
+  const course = document.getElementById('course').value;
+  const genderRadios = document.getElementsByName('gender');
+
+  // Helper function to check if a field is empty
+  function isEmpty(value) {
+    return value === '';
+  }
+
+  // Validate name fields
+  const namePattern = /^[A-Za-z]+$/;
+  if (isEmpty(firstName) || !namePattern.test(firstName)) {
+    alert('Please enter a valid first name containing only letters.');
+    return false;
+  }
+  if (isEmpty(lastName) || !namePattern.test(lastName)) {
+    alert('Please enter a valid last name containing only letters.');
+    return false;
+  }
+
+  // Validate ID number
+  const idPattern = /^\d{13}$/;
+  if (!idPattern.test(idNumber)) {
+    alert('Please enter a valid 13-digit ID number.');
+    return false;
+  }
+
+  // Validate email format
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email)) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  // Validate phone number format
+  const phonePattern = /^\d{10}$/;
+  if (!phonePattern.test(phone)) {
+    alert('Please enter a valid 10-digit phone number.');
+    return false;
+  }
+
+  // Validate date of birth (must be at least 18 years old)
+  if (dob) {
+    let birthDate = new Date(dob);
+    let age = new Date().getFullYear() - birthDate.getFullYear();
+    let m = new Date().getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && new Date().getDate() < birthDate.getDate())) {
+      age--;
+    }
+    if (age < 18) {
+      alert('You must be at least 18 years old to enroll.');
+      return false;
+    }
+  } else {
+    alert('Please enter your date of birth.');
+    return false;
+  }
+
+  // Validate address fields
+  if (isEmpty(streetAddress)) {
+    alert('Please enter your street address.');
+    return false;
+  }
+  if (isEmpty(suburb)) {
+    alert('Please enter your suburb.');
+    return false;
+  }
+  if (isEmpty(city)) {
+    alert('Please enter your city.');
+    return false;
+  }
+  if (province === '') {
+    alert('Please select your province.');
+    return false;
+  }
+
+  // Validate course selection
+  if (course === '') {
+    alert('Please select a course.');
+    return false;
+  }
+
+  // Validate gender selection
+  const genderSelected = Array.from(genderRadios).some(radio => radio.checked);
+  if (!genderSelected) {
+    alert('Please select your gender.');
+    return false;
+  }
+
+  return true;
 }
