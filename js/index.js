@@ -171,16 +171,12 @@ function displayCourses(data) {
 
 
 
-
-
-
-
+/////////////////////////////////// (more-info section start)//////////////////////////////////////////////////////////////////////////////
 
   let currentlyOpenDropdown = null;
 
 
   
-
 
 
 
@@ -214,100 +210,81 @@ function createExitButton(targetId, buttonId) {
 
 
   
-  // Function to create and append the course info section
-  function createCourseInfo() {
-    // Check if the card container already exists
-    let cardContainer = document.getElementById('card-container');
-    
-    if (!cardContainer) {
-      // Create the card container if it doesn't exist
-      cardContainer = document.createElement('div');
-      cardContainer.id = 'card-container';
-      document.body.appendChild(cardContainer);
-    }
-    
-    // Clear the container before adding new content
-    cardContainer.innerHTML = '';
+// Function to create and append the course info section
+function createCourseInfo() {
+  // Check if the card container already exists
+  let cardContainer = document.getElementById('card-container');
   
-    const courseInfo = document.createElement('div');
-    courseInfo.classList.add('course-info-popup');
-  
-    // Create and append the course title
-    const heading = document.createElement('h1');
-    heading.id = 'course-title';
-    courseInfo.appendChild(heading);
-  
-    // Create and append the course image
-    const img = document.createElement('img');
-    img.id = 'course-image-popup';
-    img.classList.add('course-image-popup');
-    img.alt = 'Course Image';
-    courseInfo.appendChild(img);
-  
-    // Create and append the course description
-    const description = document.createElement('p');
-    description.id = 'course-description';
-    description.classList.add('course-description-popup');
-    courseInfo.appendChild(description);
-  
-    // Create and append the button container
-    const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('button-container'); // Create container for buttons
-  
-    // Enroll Button
-    const enrollButton = document.createElement('button');
-    enrollButton.textContent = 'Enroll in Course';
-    enrollButton.classList.add('enroll-btn');
-    enrollButton.addEventListener('click', () => {
-
-
-
-
-
-
-
-      createEnrollForm(rows);
-
-      
-
-      const moreInfoContainer = document.querySelector("#card-container");
-      moreInfoContainer.remove();
-
-
-      scrollToPosition(230);
-
-
-
-
-
-
-
-
-    });
-    buttonContainer.appendChild(enrollButton);
-  
-    // Print Button
-    const printButton = document.createElement('button');
-    printButton.textContent = 'Print';
-    printButton.classList.add('print-btn');
-
-    printButton.addEventListener('click', () => {
-
-
-      prepareAndPrint();
-    });
-
-    buttonContainer.appendChild(printButton);
-  
-    courseInfo.appendChild(buttonContainer);
-  
-    // Append the course info to the card container
-    cardContainer.appendChild(courseInfo);
-  
-      // Create and append the exit button
-      createExitButton('card-container', 'more-info-exit-button');
+  if (!cardContainer) {
+    // Create the card container if it doesn't exist
+    cardContainer = document.createElement('div');
+    cardContainer.id = 'card-container';
+    document.body.appendChild(cardContainer);
   }
   
+  // Clear the container before adding new content
+  cardContainer.innerHTML = '';
+
+  const courseInfo = document.createElement('div');
+  courseInfo.classList.add('course-info-popup');
+
+  // Create and append the course title
+  const heading = document.createElement('h1');
+  heading.id = 'course-title';
+  courseInfo.appendChild(heading);
+
+  // Create and append the course image
+  const img = document.createElement('img');
+  img.id = 'course-image-popup';
+  img.classList.add('course-image-popup');
+  img.alt = 'Course Image';
+  courseInfo.appendChild(img);
+
+  // Create and append the course description
+  const description = document.createElement('p');
+  description.id = 'course-description';
+  description.classList.add('course-description-popup');
+  courseInfo.appendChild(description);
+
+  // Create and append the button container
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container'); // Create container for buttons
+
+  // Enroll Button
+  const enrollButton = document.createElement('button');
+  enrollButton.textContent = 'Enroll in Course';
+  enrollButton.classList.add('enroll-btn');
+  enrollButton.addEventListener('click', () => {
+    createEnrollForm(rows);
+    const moreInfoContainer = document.querySelector("#card-container");
+    moreInfoContainer.remove();
+    scrollToPosition(230);
+
+  });
+  buttonContainer.appendChild(enrollButton);
+
+  // Print Button
+  const printButton = document.createElement('button');
+  printButton.textContent = 'Print';
+  printButton.classList.add('print-btn');
+
+  printButton.addEventListener('click', () => {
+
+
+    prepareAndPrint();
+  });
+
+  buttonContainer.appendChild(printButton);
+
+  courseInfo.appendChild(buttonContainer);
+
+  // Append the course info to the card container
+  cardContainer.appendChild(courseInfo);
+
+    // Create and append the exit button
+    createExitButton('card-container', 'more-info-exit-button');
+}
+
 
 
 
@@ -412,21 +389,8 @@ function prepareAndPrint() {
 
 
 
-
-
-
-
-
-
-
-
-
  // Object to keep track of completed modules per course
 let completedCourses = {};
-
-
-
-
 
 
 
@@ -548,9 +512,6 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
     restoreCheckboxStates(chosenCourse);
   }
 }
-
-
-
 
 
 
@@ -781,10 +742,6 @@ function addFilterButton(courseCard, courseId) {
 
 
 
-
-
-
-
 // Function to restore the checkbox states based on the completedCourses object
 function restoreCheckboxStates(courseId) {
   document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
@@ -852,20 +809,13 @@ function removeBackgroundBlur() {
 }
 
 
+///////////////////////////(Section end)//////////////////////////////////////////////////////////////////
 
 
 
+///////////////////////////////////(enroll form section start))//////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
-// Wait for the DOM to fully load before executing the script
 const rows = [
   // First row with name and ID fields
   {
@@ -932,11 +882,6 @@ const rows = [
     ]
   }
 ];
-
-
-
-
-
 
 
 
@@ -1283,7 +1228,6 @@ function startCountdown(startDate, countdownPopupElement) {
   updateCountdown(); // Initial call to set the countdown immediately
   let timerInterval = setInterval(updateCountdown, 1000); // Update every second
 }
-  
 }
 
 
