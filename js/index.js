@@ -3,121 +3,9 @@
 const jsonFilePath = './data/courses.json';
 
 
-
-
 let data = {}; // Global variable to store fetched data
 
 
-
-
-let enrolledInCourses = {
-  'Bachelor of Computing': {
-    id: 0,
-    status: false
-  },
-  'Bachelor of Information Technology': {
-    id: 1,
-    status: false
-  },
-  'Diploma in Information Technology': {
-    id: 2,
-    status: false
-  },
-  'Diploma for Deaf Students': {
-    id: 3,
-    status: false
-  },
-  'Certificate: IT (Database Development)': {
-    id: 4,
-    status: false
-  },
-  'National Certificate: IT (Systems Development)': {
-    id: 5,
-    status: false
-  }
-};
-
-
-
-
-// Function to create course cards dynamically
-function displayCourses(data) {
-  const courseSection = document.getElementById('course-section');
-  
-  data.courses.forEach(course => {
-    // Create a new article element
-    const article = document.createElement('article');
-    article.classList.add('course-card');
-    
-    // Create and append the image
-    const img = document.createElement('img');
-    img.src = `assets/images/course-${course.id}.jpg`;
-    img.alt = course.title;
-    img.classList.add('course-image');
-    article.appendChild(img);
-    
-    // Create and append the course info div
-    const courseInfo = document.createElement('div');
-    courseInfo.classList.add('course-info');
-    
-    // Create and append the title
-    const title = document.createElement('h2');
-    title.classList.add('course-title');
-    title.textContent = course.title;
-    courseInfo.appendChild(title);
-    
-    // Create and append the course code
-    const code = document.createElement('p');
-    code.classList.add('course-code');
-    code.textContent = `Course Code: ${course.code}`;
-    courseInfo.appendChild(code);
-    
-    // Create and append the duration
-    const duration = document.createElement('p');
-    duration.classList.add('course-duration');
-    duration.textContent = `Duration: ${course.duration}`;
-    courseInfo.appendChild(duration);
-    
-    // Create and append the description
-    const description = document.createElement('p');
-    description.classList.add('course-description');
-    description.textContent = course.description;
-    courseInfo.appendChild(description);
-    
-    // Create and append the status section
-    const status = document.createElement('div');
-    status.classList.add('course-status');
-    const hrStatus = document.createElement('hr');
-    status.appendChild(hrStatus);
-    
-
-    const enrollmentStatusElement = document.createElement("p");
-    enrollmentStatusElement.setAttribute("id", `status-${course.id}`);
-    status.appendChild(enrollmentStatusElement);
-    // Add the enroll button
-
-
-      enrollmentStatusElement.textContent = "Status: Not Enrolled";
-      
-    
-      courseInfo.appendChild(status);
-      
-      // Create and append the view details button
-      const viewDetailsBtn = document.createElement('button');
-      viewDetailsBtn.classList.add('view-details-btn');
-      viewDetailsBtn.classList.add(course.id.toString()); // Ensure class is a string
-      viewDetailsBtn.textContent = 'View Details';
-      courseInfo.appendChild(viewDetailsBtn);
-      
-      // Append the course info to the article
-      article.appendChild(courseInfo);
-      
-      // Append the article to the section
-      courseSection.appendChild(article);
-
-
-  });
-}
 
 // Fetch JSON data and initialize
 fetch(jsonFilePath)
@@ -148,6 +36,139 @@ fetch(jsonFilePath)
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
+
+
+//Keep track of courses that the user has enrolled in
+let enrolledInCourses = {
+  'Bachelor of Computing': {
+    id: 0,
+    status: false
+  },
+  'Bachelor of Information Technology': {
+    id: 1,
+    status: false
+  },
+  'Diploma in Information Technology': {
+    id: 2,
+    status: false
+  },
+  'Diploma for Deaf Students': {
+    id: 3,
+    status: false
+  },
+  'Certificate: IT (Database Development)': {
+    id: 4,
+    status: false
+  },
+  'National Certificate: IT (Systems Development)': {
+    id: 5,
+    status: false
+  }
+};
+
+
+
+
+
+
+//Create the main page course cards dynamically (section)////////////////////////////////////////////////////////////////////////////// 
+
+
+
+// Function to create an image element
+function createImage(course) {
+  const img = document.createElement('img');
+  img.src = `assets/images/course-${course.id}.jpg`;
+  img.alt = course.title;
+  img.classList.add('course-image');
+  return img;
+}
+
+// Function to create and append course information elements
+function createMainCourseInfo(course) {
+  const courseInfo = document.createElement('div');
+  courseInfo.classList.add('course-info');
+  
+  // Title
+  const title = document.createElement('h2');
+  title.classList.add('course-title');
+  title.textContent = course.title;
+  courseInfo.appendChild(title);
+  
+  // Course Code
+  const code = document.createElement('p');
+  code.classList.add('course-code');
+  code.textContent = `Course Code: ${course.code}`;
+  courseInfo.appendChild(code);
+  
+  // Duration
+  const duration = document.createElement('p');
+  duration.classList.add('course-duration');
+  duration.textContent = `Duration: ${course.duration}`;
+  courseInfo.appendChild(duration);
+  
+  // Description
+  const description = document.createElement('p');
+  description.classList.add('course-description');
+  description.textContent = course.description;
+  courseInfo.appendChild(description);
+  
+  return courseInfo;
+}
+
+// Function to create and append the status section
+function createStatusSection(course) {
+  const status = document.createElement('div');
+  status.classList.add('course-status');
+  
+  const hrStatus = document.createElement('hr');
+  status.appendChild(hrStatus);
+  
+  const enrollmentStatusElement = document.createElement('p');
+  enrollmentStatusElement.setAttribute('id', `status-${course.id}`);
+  enrollmentStatusElement.textContent = "Status: Not Enrolled";
+  status.appendChild(enrollmentStatusElement);
+  
+  return status;
+}
+
+// Function to create and append the view details button
+function createViewDetailsButton(course) {
+  const viewDetailsBtn = document.createElement('button');
+  viewDetailsBtn.classList.add('view-details-btn');
+  viewDetailsBtn.classList.add(course.id.toString()); // Ensure class is a string
+  viewDetailsBtn.textContent = 'View Details';
+  return viewDetailsBtn;
+}
+
+// Main function to create course cards dynamically
+function displayCourses(data) {
+  const courseSection = document.getElementById('course-section');
+  
+  data.courses.forEach(course => {
+    const article = document.createElement('article');
+    article.classList.add('course-card');
+    
+    // Append image
+    article.appendChild(createImage(course));
+    
+    // Create and append course info
+    const courseInfo = createMainCourseInfo(course);
+    courseInfo.appendChild(createStatusSection(course));
+    courseInfo.appendChild(createViewDetailsButton(course));
+    
+    article.appendChild(courseInfo);
+    courseSection.appendChild(article);
+  });
+}
+
+
+/////////////////////////////////// (section end)////////////////////////////////////////////////////////////////////////////// 
+
+
+
+
+
 
 
 
