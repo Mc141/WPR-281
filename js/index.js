@@ -388,8 +388,29 @@ function prepareAndPrint() {
   
   
   
+
+
+
+
+
+
+
+
+
+
+
+
  // Object to keep track of completed modules per course
 let completedCourses = {};
+
+
+
+
+
+
+
+
+
 
 // Function to toggle modules dropdown and manage checkboxes
 function toggleModules(data, year, dropdown, button, chosenCourse) {
@@ -475,7 +496,10 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
       row.appendChild(checkboxCell);
 
       // Add event listener to handle checkbox changes
-      checkbox.addEventListener('change', () => updateCompletionStatus(chosenCourse, subject.name, checkbox.checked));
+      checkbox.addEventListener('change', () => {
+        updateCompletionStatus(chosenCourse, subject.name, checkbox.checked);
+        applyStrikethroughToRow(row, checkbox.checked);
+      });
 
       tbody.appendChild(row);
     });
@@ -494,6 +518,15 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
     restoreCheckboxStates(chosenCourse);
   }
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -572,7 +605,6 @@ function applyCompletionStyles(courseCard) {
 
 
 
-
 // Function to update completion status of modules for a specific course
 function updateCompletionStatus(courseId, moduleName, isChecked) {
   if (!completedCourses[courseId]) {
@@ -595,6 +627,16 @@ function updateCompletionStatus(courseId, moduleName, isChecked) {
   // Update the total number of completed modules and progress bar
   updateCompletedCoursesCount(courseId);
   updateProgressBar(courseId);
+}
+
+// Function to apply or remove strikethrough on the table row
+function applyStrikethroughToRow(row, isChecked) {
+  // Toggle strikethrough class based on the checkbox state
+  if (isChecked) {
+    row.classList.add('strikethrough');
+  } else {
+    row.classList.remove('strikethrough');
+  }
 }
 
 
@@ -673,17 +715,26 @@ function updateCompletedCoursesCount(courseId) {
 
 
 
+
+
+
+
+
+
 // Function to restore the checkbox states based on the completedCourses object
 function restoreCheckboxStates(courseId) {
   document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
     const moduleName = checkbox.closest('tr').querySelector('td').textContent;
-    checkbox.checked = completedCourses[courseId] && completedCourses[courseId].includes(moduleName);
+    const isChecked = completedCourses[courseId] && completedCourses[courseId].includes(moduleName);
+
+    // Update the checkbox checked state and strikethrough class
+    checkbox.checked = isChecked;
+    applyStrikethroughToRow(checkbox.closest('tr'), isChecked);
   });
 
   // Update progress bar after restoring checkbox states
   updateProgressBar(courseId);
 }
-
 
 
 
