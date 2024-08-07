@@ -156,9 +156,7 @@ fetch(jsonFilePath)
 
   let currentlyOpenDropdown = null;
 
-  // Object to keep track of completed courses
-  const completedCourses = {};
-  
+
   
 
 
@@ -389,143 +387,152 @@ function prepareAndPrint() {
   
   
   
-  // Function to toggle the display of modules in a table format for a given year
-  function toggleModules(data, year, dropdown, button, chosenCourse) {
-    // Check if a dropdown is currently open
-    if (currentlyOpenDropdown && currentlyOpenDropdown !== dropdown) {
-      // Close the currently open dropdown
-      const openDropdownContent = currentlyOpenDropdown.querySelector('.dropdown-content');
-      const openDropdownButton = currentlyOpenDropdown.querySelector('.dropdown-btn');
-      if (openDropdownContent) {
-        openDropdownContent.remove();
-      }
-      // Reset the button icon for the currently open dropdown
-      openDropdownButton.classList.remove('open');
+ // Object to keep track of completed modules per course
+let completedCourses = {};
+
+// Function to toggle modules dropdown and manage checkboxes
+function toggleModules(data, year, dropdown, button, chosenCourse) {
+  // Check if a dropdown is currently open
+  if (currentlyOpenDropdown && currentlyOpenDropdown !== dropdown) {
+    // Close the currently open dropdown
+    const openDropdownContent = currentlyOpenDropdown.querySelector('.dropdown-content');
+    const openDropdownButton = currentlyOpenDropdown.querySelector('.dropdown-btn');
+    if (openDropdownContent) {
+      openDropdownContent.remove();
     }
-  
-    // Check if the current dropdown content is already open
-    let dropdownContent = dropdown.querySelector('.dropdown-content');
-  
-    // If it exists, remove it (i.e., close the dropdown)
-    if (dropdownContent) {
-      dropdownContent.remove();
-      button.classList.remove('open'); // Reset the button icon
-      currentlyOpenDropdown = null; // Reset the currently open dropdown
-    } else {
-      // Create the table container if it doesn't exist
-      dropdownContent = document.createElement('div');
-      dropdownContent.classList.add('dropdown-content');
-  
-      // Create table and table body
-      const table = document.createElement('table');
-      const tbody = document.createElement('tbody');
-  
-      // Create the table headers
-      const thead = document.createElement('thead');
-      const headerRow = document.createElement('tr');
-      const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link', 'Complete'];
-  
-      // Loop through headings to create table header cells
-      headings.forEach(heading => {
-        const th = document.createElement('th');
-        th.textContent = heading;
-        headerRow.appendChild(th);
-      });
-  
-      thead.appendChild(headerRow);
-      table.appendChild(thead);
-  
-      // Create and populate the cells for each subject
-      data.courses[chosenCourse].modules[year].subjects.forEach(subject => {
-        const row = document.createElement('tr');
-  
-        // Create and populate the cells for each subject
-        Object.entries(subject).forEach(([key, value]) => {
-          const cell = document.createElement('td');
-  
-          if (key === 'studyGuide') {
-            // Create a download link for the study guide
-            const link = document.createElement('a');
-            link.href = value;
-            link.textContent = 'Download';
-            link.target = '_blank'; // Open link in a new tab
-            cell.appendChild(link);
-          } else if (key === 'videoLink') {
-            // Create a clickable link for the video
-            const link = document.createElement('a');
-            link.href = value;
-            link.textContent = 'Watch';
-            link.target = '_blank';
-            cell.appendChild(link);
-          } else {
-            cell.textContent = value; // Regular text content
-          }
-  
-          row.appendChild(cell);
-        });
-  
-        // Create checkbox cell and move it to the end
-        const checkboxCell = document.createElement('td');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.classList.add('completion-checkbox');
-        checkboxCell.appendChild(checkbox);
-        row.appendChild(checkboxCell);
-  
-        // Add event listener to handle checkbox changes
-        checkbox.addEventListener('change', () => updateCompletionStatus(subject.name, checkbox.checked));
-  
-        tbody.appendChild(row);
-      });
-  
-      table.appendChild(tbody); // Append tbody to the table
-      dropdownContent.appendChild(table); // Append the table to dropdownContent
-      dropdown.appendChild(dropdownContent); // Append dropdownContent to the dropdown
-  
-      // Update the currently open dropdown
-      currentlyOpenDropdown = dropdown;
-  
-      // Add class to button to indicate open state
-      button.classList.add('open');
-      
-      // Restore checkbox states
-      restoreCheckboxStates();
-    }
-  
-  
-  
-  
-  // Function to update completion status of a course
-  function updateCompletionStatus(courseName, isChecked) {
-    // Update the completion status in the completedCourses object
-    if (isChecked) {
-      completedCourses[courseName] = true;
-    } else {
-      delete completedCourses[courseName];
-    }
-  
-    // Log the updated completedCourses object
-    console.log('Updated completed courses:', completedCourses);
-  
-    // Update the total number of completed courses
-    updateCompletedCoursesCount();
+    // Reset the button icon for the currently open dropdown
+    openDropdownButton.classList.remove('open');
   }
-  
-  // Function to update the count of completed courses
-  function updateCompletedCoursesCount() {
-    let count = Object.keys(completedCourses).length;
-    console.log(`Total completed courses: ${count}`);
-  }
-  
-  // Function to restore the checkbox states based on the completedCourses object
-  function restoreCheckboxStates() {
-    document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
-      const courseName = checkbox.closest('tr').querySelector('td').textContent;
-      checkbox.checked = completedCourses[courseName] || false;
+
+  // Check if the current dropdown content is already open
+  let dropdownContent = dropdown.querySelector('.dropdown-content');
+
+  // If it exists, remove it (i.e., close the dropdown)
+  if (dropdownContent) {
+    dropdownContent.remove();
+    button.classList.remove('open'); // Reset the button icon
+    currentlyOpenDropdown = null; // Reset the currently open dropdown
+  } else {
+    // Create the table container if it doesn't exist
+    dropdownContent = document.createElement('div');
+    dropdownContent.classList.add('dropdown-content');
+
+    // Create table and table body
+    const table = document.createElement('table');
+    const tbody = document.createElement('tbody');
+
+    // Create the table headers
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link', 'Complete'];
+
+    // Loop through headings to create table header cells
+    headings.forEach(heading => {
+      const th = document.createElement('th');
+      th.textContent = heading;
+      headerRow.appendChild(th);
     });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create and populate the cells for each subject
+    data.courses[chosenCourse].modules[year].subjects.forEach(subject => {
+      const row = document.createElement('tr');
+
+      // Create and populate the cells for each subject
+      Object.entries(subject).forEach(([key, value]) => {
+        const cell = document.createElement('td');
+
+        if (key === 'studyGuide') {
+          // Create a download link for the study guide
+          const link = document.createElement('a');
+          link.href = value;
+          link.textContent = 'Download';
+          link.target = '_blank'; // Open link in a new tab
+          cell.appendChild(link);
+        } else if (key === 'videoLink') {
+          // Create a clickable link for the video
+          const link = document.createElement('a');
+          link.href = value;
+          link.textContent = 'Watch';
+          link.target = '_blank';
+          cell.appendChild(link);
+        } else {
+          cell.textContent = value; // Regular text content
+        }
+
+        row.appendChild(cell);
+      });
+
+      // Create checkbox cell and move it to the end
+      const checkboxCell = document.createElement('td');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.classList.add('completion-checkbox');
+      checkboxCell.appendChild(checkbox);
+      row.appendChild(checkboxCell);
+
+      // Add event listener to handle checkbox changes
+      checkbox.addEventListener('change', () => updateCompletionStatus(chosenCourse, subject.name, checkbox.checked));
+
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody); // Append tbody to the table
+    dropdownContent.appendChild(table); // Append the table to dropdownContent
+    dropdown.appendChild(dropdownContent); // Append dropdownContent to the dropdown
+
+    // Update the currently open dropdown
+    currentlyOpenDropdown = dropdown;
+
+    // Add class to button to indicate open state
+    button.classList.add('open');
+    
+    // Restore checkbox states
+    restoreCheckboxStates(chosenCourse);
+  }
+}
+
+// Function to update completion status of modules for a specific course
+function updateCompletionStatus(courseId, moduleName, isChecked) {
+  if (!completedCourses[courseId]) {
+    completedCourses[courseId] = [];
   }
   
-  };
+  if (isChecked) {
+    // Add module to the list of completed modules
+    if (!completedCourses[courseId].includes(moduleName)) {
+      completedCourses[courseId].push(moduleName);
+    }
+  } else {
+    // Remove module from the list of completed modules
+    completedCourses[courseId] = completedCourses[courseId].filter(module => module !== moduleName);
+  }
+
+  // Log the updated completedCourses object
+  console.log('Updated completed courses:', completedCourses);
+
+  // Update the total number of completed modules
+  updateCompletedCoursesCount();
+}
+
+// Function to update the count of completed modules
+function updateCompletedCoursesCount() {
+  let count = Object.values(completedCourses).flat().length;
+  console.log(`Total completed modules: ${count}`);
+}
+
+// Function to restore the checkbox states based on the completedCourses object
+function restoreCheckboxStates(courseId) {
+  document.querySelectorAll('.completion-checkbox').forEach(checkbox => {
+    const moduleName = checkbox.closest('tr').querySelector('td').textContent;
+    checkbox.checked = completedCourses[courseId] && completedCourses[courseId].includes(moduleName);
+  });
+}
+
+
+
 
   function scrollToPosition(targetY) {
     const scrollDuration = 300; // Duration in milliseconds
