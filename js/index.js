@@ -411,7 +411,6 @@ let completedCourses = {};
 
 
 
-
 // Function to toggle modules dropdown and manage checkboxes
 function toggleModules(data, year, dropdown, button, chosenCourse) {
   // Check if a dropdown is currently open
@@ -438,6 +437,13 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
     // Create the table container if it doesn't exist
     dropdownContent = document.createElement('div');
     dropdownContent.classList.add('dropdown-content');
+
+    // Create the filter button and add it to the dropdownContent before the table
+    const filterButton = document.createElement('button');
+    filterButton.classList.add('filter-button');
+    filterButton.textContent = 'Filter Completed';
+    filterButton.addEventListener('click', () => toggleFilterCompleted(filterButton, dropdownContent));
+    dropdownContent.appendChild(filterButton);
 
     // Create table and table body
     const table = document.createElement('table');
@@ -491,6 +497,7 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
       const checkboxCell = document.createElement('td');
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
+      checkbox.style.cursor = "pointer";
       checkbox.classList.add('completion-checkbox');
       checkboxCell.appendChild(checkbox);
       row.appendChild(checkboxCell);
@@ -506,7 +513,9 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
 
     table.appendChild(tbody); // Append tbody to the table
     dropdownContent.appendChild(table); // Append the table to dropdownContent
-    dropdown.appendChild(dropdownContent); // Append dropdownContent to the dropdown
+
+    // Append dropdownContent to the dropdown
+    dropdown.appendChild(dropdownContent);
 
     // Update the currently open dropdown
     currentlyOpenDropdown = dropdown;
@@ -525,6 +534,27 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
 
 
 
+// Function to toggle the visibility of completed modules
+function toggleFilterCompleted(button, dropdownContent) {
+  const isFiltering = button.textContent === 'Filter Completed';
+
+  // Update the button text
+  button.textContent = isFiltering ? 'Remove Filter' : 'Filter Completed';
+
+  // Toggle visibility of rows based on completion status
+  dropdownContent.querySelectorAll('tbody tr').forEach(row => {
+    const checkbox = row.querySelector('.completion-checkbox');
+    if (isFiltering) {
+      // Hide uncompleted modules
+      if (!checkbox.checked) {
+        row.classList.add('hidden');
+      }
+    } else {
+      // Show all modules
+      row.classList.remove('hidden');
+    }
+  });
+}
 
 
 
@@ -604,7 +634,6 @@ function applyCompletionStyles(courseCard) {
 
 
 
-
 // Function to update completion status of modules for a specific course
 function updateCompletionStatus(courseId, moduleName, isChecked) {
   if (!completedCourses[courseId]) {
@@ -629,6 +658,11 @@ function updateCompletionStatus(courseId, moduleName, isChecked) {
   updateProgressBar(courseId);
 }
 
+
+
+
+
+
 // Function to apply or remove strikethrough on the table row
 function applyStrikethroughToRow(row, isChecked) {
   // Toggle strikethrough class based on the checkbox state
@@ -638,13 +672,6 @@ function applyStrikethroughToRow(row, isChecked) {
     row.classList.remove('strikethrough');
   }
 }
-
-
-
-
-
-
-
 
 
 // Function to update the count of completed modules and progress bar
@@ -709,7 +736,23 @@ function updateCompletedCoursesCount(courseId) {
 
 
 
+// Function to add a filter button to the course card
+function addFilterButton(courseCard, courseId) {
+  const buttonContainer = courseCard.querySelector('.button-container');
 
+  // Create filter button
+  const filterButton = document.createElement('button');
+  filterButton.textContent = 'Filter Completed';
+  filterButton.classList.add('filter-button');
+  
+  // Add click event listener for filtering
+  filterButton.addEventListener('click', () => {
+    toggleFilterCompleted(filterButton, courseId);
+  });
+
+  // Append the button to the button container
+  buttonContainer.appendChild(filterButton);
+}
 
 
 
@@ -735,7 +778,6 @@ function restoreCheckboxStates(courseId) {
   // Update progress bar after restoring checkbox states
   updateProgressBar(courseId);
 }
-
 
 
 
