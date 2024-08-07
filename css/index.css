@@ -266,52 +266,70 @@ html {
     color: #ffffff;
 }
 
-/* Completed Course Styles */
-.course-card.completed {
-    background: linear-gradient(145deg, #2a2a2a, #1f1f1f); /* Slightly different gradient */
-    border: 2px solid #00ff00; /* Add a green border */
-    transition: background-color 0.5s ease, border 0.5s ease; /* Smooth transition */
-    width: calc(100% - 4px);
-    height: calc(auto - 4px);
-}
 
-/* Style for completed course title */
-.course-card.completed .course-title {
-    color: #00ff00; /* Green text color */
-    font-weight: bold;
-    text-shadow: 2px 2px 6px rgba(0, 255, 0, 0.6); /* Green text shadow */
-}
 
-/* Badge or overlay for completed courses */
-.course-card.completed::after {
-    content: 'Completed';
+
+
+
+
+
+
+
+
+/* Styles for the completed course card */
+.completed-course {
+    position: relative;
+    border: 2px solid green;
+  }
+  
+  .completed-tag {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(0, 255, 0, 0.7);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
     font-weight: bold;
-    font-size: 0.9rem;
-    z-index: 2;
-    transition: opacity 0.3s ease; /* Smooth transition for visibility */
-    opacity: 1; /* Ensure visibility when completed */
-}
+    z-index: 100;
+  }
+  
+  .completed-animation {
+    animation: pulse 8s forwards; /* Animation lasts 6 seconds and stops */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
+  }
+  
 
-/* Horizontal line styling */
-.course-status hr,
-.progress-container hr {
-    border: none;
-    height: 2px;
-    background-color: #e0e0e0;
-    transition: background-color 0.3s ease;
-}
+  
 
-.course-status.completed hr,
-.progress-container.completed hr {
-    background-color: #00ff00;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Responsive Adjustments */
 @media (max-width: 944px) {

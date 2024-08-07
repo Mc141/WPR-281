@@ -1,5 +1,12 @@
+
 // URL to the JSON file
 const jsonFilePath = './data/courses.json';
+
+
+
+
+let data = {}; // Global variable to store fetched data
+
 
 
 
@@ -112,7 +119,7 @@ function displayCourses(data) {
   });
 }
 
-// Fetch JSON data and call the display function
+// Fetch JSON data and initialize
 fetch(jsonFilePath)
   .then(response => {
     if (!response.ok) {
@@ -120,29 +127,23 @@ fetch(jsonFilePath)
     }
     return response.json();
   })
-  .then(data => {
+  .then(fetchedData => {
+    data = fetchedData; // Assign fetched data to global variable
     displayCourses(data);
+
+    // Attach event listeners
     const allDetailButtons = document.querySelectorAll(".view-details-btn");
-        // Event listener for the view details button
-        allDetailButtons.forEach((button) => {
-
-
-          button.addEventListener("click", () => {
-            const chosenCourse = button.className.match(/\d+/)[0];
-            console.log(chosenCourse); // For debugging purposes
-            createCourseInfo(); 
-            displayHeading(data, chosenCourse);
-            displayYears(data, chosenCourse);
-
-            blurBackground();
-            scrollToPosition(300);
-            
-        
-          });
-
-
-        })
-
+    allDetailButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const chosenCourse = button.className.match(/\d+/)[0];
+        console.log(chosenCourse); // For debugging purposes
+        createCourseInfo(); 
+        displayHeading(data, chosenCourse);
+        displayYears(data, chosenCourse);
+        blurBackground();
+        scrollToPosition(300);
+      });
+    });
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
@@ -494,12 +495,90 @@ function toggleModules(data, year, dropdown, button, chosenCourse) {
   }
 }
 
+
+
+
+
+// Function to update the progress bar and percentage
+function updateProgressBar(courseId) {
+  const progressElement = document.getElementById(`progress-${courseId}`);
+  const percentageElement = document.querySelector(`#progress-${courseId} + .progress-percentage`);
+
+  if (!data.courses[courseId]) {
+    console.error(`Course ID ${courseId} not found in data.`);
+    return;
+  }
+
+  const totalModules = data.courses[courseId].modules.flatMap(module => module.subjects).length; // Total modules for the course
+  const completedModules = completedCourses[courseId] ? completedCourses[courseId].length : 0; // Completed modules count
+
+  // Calculate percentage
+  const percentage = totalModules > 0 ? (completedModules / totalModules) * 100 : 0;
+
+  // Update progress bar and percentage display
+  if (progressElement) {
+    progressElement.value = percentage;
+  }
+  if (percentageElement) {
+    percentageElement.textContent = `${Math.round(percentage)}%`;
+  }
+}
+
+
+
+
+
+
+
+
+// Function to apply completion styles
+function applyCompletionStyles(courseCard) {
+  if (!courseCard) return;
+
+  // Create and add the "Completed" note
+  let completedNote = courseCard.querySelector('.completed-note');
+  if (!completedNote) {
+    completedNote = document.createElement('div');
+    completedNote.className = 'completed-note';
+    completedNote.textContent = 'Completed';
+    courseCard.appendChild(completedNote);
+  }
+
+  // Apply styles and animations
+  courseCard.style.border = '3px solid green';
+  courseCard.style.position = 'relative'; // Needed for absolute positioning of note
+
+  // Change colors
+  courseCard.querySelectorAll('hr').forEach(hr => hr.style.backgroundColor = 'green');
+  const courseTitle = courseCard.querySelector('.course-title');
+  if (courseTitle) {
+    courseTitle.style.color = 'green';
+  }
+
+  // Animation (you can adjust the animation as needed)
+  courseCard.classList.add('completed-animation');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to update completion status of modules for a specific course
 function updateCompletionStatus(courseId, moduleName, isChecked) {
   if (!completedCourses[courseId]) {
     completedCourses[courseId] = [];
   }
-  
+
   if (isChecked) {
     // Add module to the list of completed modules
     if (!completedCourses[courseId].includes(moduleName)) {
@@ -513,15 +592,86 @@ function updateCompletionStatus(courseId, moduleName, isChecked) {
   // Log the updated completedCourses object
   console.log('Updated completed courses:', completedCourses);
 
-  // Update the total number of completed modules
-  updateCompletedCoursesCount();
+  // Update the total number of completed modules and progress bar
+  updateCompletedCoursesCount(courseId);
+  updateProgressBar(courseId);
 }
 
-// Function to update the count of completed modules
-function updateCompletedCoursesCount() {
-  let count = Object.values(completedCourses).flat().length;
-  console.log(`Total completed modules: ${count}`);
+
+
+
+
+
+
+
+
+// Function to update the count of completed modules and progress bar
+function updateCompletedCoursesCount(courseId) {
+  if (!data.courses[courseId]) {
+    console.error(`Course ID ${courseId} not found in data.`);
+    return;
+  }
+
+  // Get the total number of modules for the course
+  const totalModules = data.courses[courseId].modules.flatMap(module => module.subjects).length;
+  const completedModules = completedCourses[courseId]?.length || 0;
+
+  // Calculate the percentage completion
+  const percentage = (totalModules > 0) ? (completedModules / totalModules) * 100 : 0;
+
+  // Update the progress bar and percentage display
+  const progressBar = document.getElementById(`progress-${courseId}`);
+  const progressPercentage = document.querySelector(`#progress-${courseId} + .progress-percentage`);
+  const courseCard = document.querySelector(`.course-card img[src*="course-${courseId}"]`).closest('.course-card'); // Select the course card
+
+  if (progressBar) {
+    progressBar.value = percentage;
+  }
+
+  if (progressPercentage) {
+    progressPercentage.textContent = `${Math.round(percentage)}%`;
+  }
+
+  // Check if the course is completed and apply styles if it is
+  if (percentage === 100) {
+    // Add "Completed" tag
+    let completedTag = document.createElement('div');
+    completedTag.className = 'completed-tag';
+    completedTag.textContent = 'Completed';
+    courseCard.appendChild(completedTag);
+
+    // Apply completed styling
+    courseCard.classList.add('completed-course');
+    const courseTitle = courseCard.querySelector('.course-title');
+    const hrElements = courseCard.querySelectorAll('hr');
+
+    // Apply styles
+    if (courseTitle) {
+      courseTitle.style.color = 'green';
+    }
+    hrElements.forEach(hr => hr.style.backgroundColor = 'green');
+    courseCard.style.border = '2px solid green';
+
+    // Apply any additional animations if desired
+    courseCard.classList.add('completed-animation');
+  }
+
+  console.log(`Total completed modules: ${completedModules}`);
+  console.log(`Progress: ${Math.round(percentage)}%`);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Function to restore the checkbox states based on the completedCourses object
 function restoreCheckboxStates(courseId) {
@@ -529,7 +679,14 @@ function restoreCheckboxStates(courseId) {
     const moduleName = checkbox.closest('tr').querySelector('td').textContent;
     checkbox.checked = completedCourses[courseId] && completedCourses[courseId].includes(moduleName);
   });
+
+  // Update progress bar after restoring checkbox states
+  updateProgressBar(courseId);
 }
+
+
+
+
 
 
 
