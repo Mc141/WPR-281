@@ -3,9 +3,8 @@
 const jsonFilePath = './data/courses.json';
 
 
-let data = {}; // Global variable to store fetched data
-
-
+let data = {}; // Global variable for fetched data
+let chosenCourse = null; // Global variable for the chosen course ID
 
 // Fetch JSON data and initialize
 fetch(jsonFilePath)
@@ -23,7 +22,7 @@ fetch(jsonFilePath)
     const allDetailButtons = document.querySelectorAll(".view-details-btn");
     allDetailButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        const chosenCourse = button.className.match(/\d+/)[0];
+        chosenCourse = button.className.match(/\d+/)[0];
         console.log(chosenCourse); // For debugging purposes
         createCourseInfo(); 
         displayHeading(data, chosenCourse);
@@ -36,7 +35,6 @@ fetch(jsonFilePath)
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
-
 
 //Keep track of courses that the user has enrolled in
 let enrolledInCourses = {
@@ -271,7 +269,7 @@ function createCourseInfo() {
   printButton.addEventListener('click', () => {
 
 
-    prepareAndPrint();
+    prepareAndPrint(chosenCourse);
   });
 
   buttonContainer.appendChild(printButton);
@@ -291,7 +289,7 @@ function createCourseInfo() {
 
 
 // Function to prepare and print the course information
-function prepareAndPrint() {
+function prepareAndPrint(chosenCourse) {
   const printContainer = document.createElement('div');
   printContainer.id = 'print-container';
 
@@ -305,8 +303,89 @@ function prepareAndPrint() {
   printContainer.appendChild(courseImage);
   printContainer.appendChild(courseDescription);
 
-  // Clone and append modules container
-  const modulesContainer = document.querySelector('.container').cloneNode(true);
+
+
+  if (!data.courses[chosenCourse]) {
+    console.error(`Course ID ${chosenCourse} not found in data.`);
+    return;
+  }
+
+  // Create a container for the modules
+  const modulesContainer = document.createElement('div');
+  modulesContainer.classList.add('modules-container');
+
+  // Iterate over all years to create tables
+  Object.keys(data.courses[chosenCourse].modules).forEach(year => {
+    const yearData = data.courses[chosenCourse].modules[year];
+
+    // Create a section for the current year
+    const yearSection = document.createElement('section');
+    yearSection.classList.add('year-section');
+
+    // Create a header for the year
+    const yearHeader = document.createElement('h2');
+    yearHeader.textContent = `Year ${Number(year) + 1}`;
+    yearSection.appendChild(yearHeader);
+
+    // Create the table for the current year
+    const table = document.createElement('table');
+    const tbody = document.createElement('tbody');
+
+    // Create table headers
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    const headings = ['Name', 'Lecturer', 'Venue', 'Study Guide', 'Video Link', 'Complete'];
+
+    headings.forEach(heading => {
+      const th = document.createElement('th');
+      th.textContent = heading;
+      headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Populate the table with data
+    yearData.subjects.forEach(subject => {
+      const row = document.createElement('tr');
+
+      Object.entries(subject).forEach(([key, value]) => {
+        const cell = document.createElement('td');
+
+        if (key === 'studyGuide') {
+          const link = document.createElement('a');
+          link.href = value;
+          link.textContent = 'Download';
+          link.target = '_blank';
+          cell.appendChild(link);
+        } else if (key === 'videoLink') {
+          const link = document.createElement('a');
+          link.href = value;
+          link.textContent = 'Watch';
+          link.target = '_blank';
+          cell.appendChild(link);
+        } else {
+          cell.textContent = value;
+        }
+
+        row.appendChild(cell);
+      });
+
+      const checkboxCell = document.createElement('td');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.disabled = true; // Disable the checkbox in print view
+      checkboxCell.appendChild(checkbox);
+      row.appendChild(checkboxCell);
+
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    yearSection.appendChild(table);
+    modulesContainer.appendChild(yearSection);
+  });
+
   printContainer.appendChild(modulesContainer);
 
   // Open a new window for printing
@@ -332,6 +411,7 @@ function prepareAndPrint() {
     printWindow.close(); // Close the window after printing
   };
 }
+
 
   
 

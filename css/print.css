@@ -15,7 +15,7 @@ body {
 }
 
 .course-image-popup {
-    width: 100%;
+    width: 400px;
     height: auto;
     margin-bottom: 10px;
     display: block; /* Ensure image is block-level to avoid inline spacing issues */
